@@ -1,0 +1,87 @@
+@import "./variables";
+
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: $white-color;
+  height: 100%;
+  //font-family: $font-family;
+  font-size: 14px;
+  color: $text-color;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: $main-color;
+}
+
+p, .card p, .item p {
+  color: $text-color;
+
+}
+
+ion-card.card {
+  -webkit-box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header .toolbar-background {
+  background: $white-color;
+  border: none;
+}
+
+.side-menu {
+  .content {
+    background-color: $side-menu-color;
+  }
+  button.item-block {
+    background-color: $side-menu-color;
+    .item-inner {
+      background: none;
+      border-bottom: 0;
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+    &.activated {
+      background-color: $white-color;
+    }
+  }
+}
+
+.sub-nav {
+  .tabbar {
+    background: $sub-nav-color;
+    border-top: 0;
+    .tab-button[aria-selected=true] .tab-button-icon {
+      color: #488aff;
+    }
+    .tab-button-icon {
+      color: $white-color;
+    }
+  }
+}
+
+ion-modal {
+  .ion-modal-header {
+    .toolbar-title {
+      color: $main-color;
+      margin: 25px 0;
+    }
+    .icon-close {
+      color: $main-color;
+      font-size: 28px;
+      position: absolute;
+      right: 15px;
+      top: 10px;
+    }
+  }
+}
+
+hr.line-shadow {
+  -webkit-box-shadow: 0 1px 5px 2px rgba(153, 153, 153, 0.3);
+  box-shadow: 0 1px 5px 2px rgba(153, 153, 153, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
+}

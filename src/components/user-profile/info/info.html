@@ -1,0 +1,113 @@
+<div [ngSwitch]="card.type">
+  <!-- About You Card -->
+  <div class="card-inner" *ngSwitchCase="'about_you'">
+    <div class="profile-info" *ngIf="!card.edit">
+      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui
+        blanditiis praesentium voluptatum deleniti atque corrupti quos do-
+        lores et quas molestias excepturi sint occaecati cupiditate non
+        provident, similique sunt in culpa qui officia deserunt mollitia animi,
+        id est laborum et dolorum fuga.</p>
+    </div>
+    <form [formGroup]="aboutForm" class="form-edit" *ngIf="card.edit">
+      <ion-list>
+        <ion-item>
+          <ion-textarea formControlName="about" placeholder="Tell about yourself"></ion-textarea>
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
+  <!-- Basic Info Card -->
+  <div class="card-inner" *ngSwitchCase="'basic_info'">
+    <ion-list class="profile-info" *ngIf="!card.edit">
+      <ion-item>
+        <label float-left>Age</label>
+        <p>18</p>
+      </ion-item>
+      <ion-item>
+        <label float-left>Gender</label>
+        <p>Female</p>
+      </ion-item>
+      <ion-item>
+        <label float-left>Marital Status</label>
+        <p>Single</p>
+      </ion-item>
+      <ion-item>
+        <label float-left>Interested in</label>
+        <p>Men</p>
+      </ion-item>
+      <ion-item>
+        <label float-left>Location</label>
+        <p>Sydney NSW, Australia</p>
+      </ion-item>
+    </ion-list>
+    <form [formGroup]="basicInfoForm" class="form-edit" *ngIf="card.edit">
+      <ion-list>
+        <ion-item>
+          <ion-label>Age</ion-label>
+          <ion-input formControlName="age" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Gender</ion-label>
+          <ion-select formControlName="gender">
+            <ion-option *ngFor="let item of selectGenderData" value="{{item.id}}">{{item.text}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Marital Status</ion-label>
+          <ion-select formControlName="relationship_status">
+            <ion-option *ngFor="let item of selectRelationshipData" value="{{item.id}}">{{item.text}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Interested in</ion-label>
+          <ion-select formControlName="relationship_status">
+            <ion-option *ngFor="let item of selectinterestedInData" value="{{item.id}}">{{item.text}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Location</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
+  <!-- Work & Education Card -->
+  <div class="card-inner" *ngSwitchCase="'work_education'">
+    <ion-list class="profile-info" *ngIf="!card.edit">
+      <ion-item>
+        <label float-left>Occupation Industry</label>
+        <p>Accounting</p>
+      </ion-item>
+      <ion-item>
+        <label float-left>Highest Education Level</label>
+        <p>University</p>
+      </ion-item>
+      <ion-item>
+        <label float-left>Income</label>
+        <p>40,000 - 50,000</p>
+      </ion-item>
+    </ion-list>
+    <form [formGroup]="workEducationForm" class="form-edit" *ngIf="card.edit">
+      <ion-list>
+        <ion-item>
+          <ion-label>Occupation Industry</ion-label>
+          <ion-select formControlName="occupation">
+            <ion-option *ngFor="let item of selectOccupationData" value="{{item.id}}">{{item.text}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Highest Education Level</ion-label>
+          <ion-select formControlName="education">
+            <ion-option *ngFor="let item of selectEducationData" value="{{item.id}}">{{item.text}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Income</ion-label>
+          <ion-select formControlName="income">
+            <ion-option *ngFor="let item of selectIncomeData" value="{{item.id}}">{{item.text}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
+</div>

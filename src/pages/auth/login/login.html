@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <ion-list>
+      <ion-item>
+        <!--<ion-label>Label</ion-label>-->
+        <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button block [disabled]="!form.valid">Log in</button>
+    </div>
+    <a class="btn btn-link" (click)="goToRegister()">Or create an account</a>
+    <a class="btn btn-link" (click)="goToProfile()">Profile</a>
+  </form>
+</ion-content>
+
+

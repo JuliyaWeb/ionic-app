@@ -1,0 +1,24 @@
+@import "../../theme/variables";
+
+page-profile {
+
+}
+.profile-tab-bar {
+  .segment-button {
+    color: $main-color;
+    border: none;
+    &.segment-activated {
+      color: $main-color;
+      background: none;
+      font-weight: bold;
+    }
+  }
+}
+
+.profile-page-content {
+  ion-card {
+    .card-icons {
+
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import "../../../theme/variables";
+
+info {
+  .label {
+    color: $main-color;
+    font-size: 14px;
+  }
+  .card-inner {
+    .item-block {
+      padding: 0;
+      font-size: 14px;
+      .item-inner {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+.form-edit {
+  .input, .select {
+    background: #f6f6f6;
+    font-size: 14px;
+    padding: 0 8px;
+  }
+}

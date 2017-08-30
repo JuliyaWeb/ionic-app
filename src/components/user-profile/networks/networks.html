@@ -1,4 +1,7 @@
-<!-- Generated template for the NetworksComponent component -->
-<div>
-  {{text}}
+<div class="networks-content" margin>
+  <div class="info-text" text-center *ngIf="userNetworks.length == 0">
+    <h5>You’re missing out on some cool features.</h5>
+    <h5>Add some social media accounts to unlock more campaign styles & social account insights</h5>
+  </div>
+  <button ion-button margin-top full (click)="openModal()">+ Add Network</button>
 </div>

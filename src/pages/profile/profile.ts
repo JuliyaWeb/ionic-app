@@ -11,8 +11,8 @@ import { InitProfileDataService, Card } from "../../components/user-profile/shar
 })
 export class ProfilePage {
   public cards: Array<Card> = [];
-  public segment = 'interests';
-  // public segment = 'info';
+  // public segment = 'interests';
+  public segment = 'info';
   public user: User;
 
 

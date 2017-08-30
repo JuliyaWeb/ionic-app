@@ -63,8 +63,4 @@ export class LoginPage {
     this.navCtrl.setRoot(RegisterPage);
   }
 
-  goToProfile() {
-    this.navCtrl.setRoot(TabsPage);
-  }
-
 }

@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Http, RequestOptions, XHRBackend, HttpModule } from "@angular/http";
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { Camera } from '@ionic-native/camera';
 import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,6 +33,7 @@ import { APP_PROVIDERS, ApiHttp, Session, Config } from "../core/providers";
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     ...APP_PROVIDERS,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: Http, useClass: ApiHttp, deps: [XHRBackend, RequestOptions, Session, Config]},

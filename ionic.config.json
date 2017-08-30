@@ -1,6 +1,6 @@
 {
   "name": "lineup-mobile",
-  "app_id": "",
+  "app_id": "5a058191",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

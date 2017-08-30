@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { InterestsDataService, Interest } from "../shared";
+import { InterestsDataService } from "../shared";
 import { ModalController } from "ionic-angular";
 import { InterestsModalComponent } from "./list-interests-modal/list-interests-modal";
 

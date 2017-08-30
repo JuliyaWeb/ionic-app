@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle ion-button icon-only right>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{task.task_type_display}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="task-component" margin [ngSwitch]="task.task_type">
+    <event-task *ngSwitchCase="taskType.EVENT"></event-task>
+    <post-task *ngSwitchCase="taskType.POST"></post-task>
+    <share-task *ngSwitchCase="taskType.SHARE"></share-task>
+    <review-task *ngSwitchCase="taskType.REVIEW"></review-task>
+    <aquisition-task *ngSwitchCase="taskType.AQUISITION"></aquisition-task>
+    <create-task *ngSwitchCase="taskType.CREATE"></create-task>
+    <!--<trial-test-task *ngSwitchCase="taskTypes.TRIALTEST" [task]="item" [isSubmit]="isSubmit"></trial-test-task>-->
+    <!--<poll-survey-task *ngSwitchCase="taskTypes.POLLSURVEY" [task]="item" [isSubmit]="isSubmit"></poll-survey-task>-->
+  </div>
+</ion-content>

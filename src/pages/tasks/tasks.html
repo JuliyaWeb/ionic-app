@@ -7,7 +7,21 @@
   </ion-navbar>
 </ion-header>
 
-
-<ion-content padding>
-  Tasks Page!!!
+<ion-content>
+  <ion-card *ngFor="let task of listTasks">
+    <ion-card-content (click)="goToDetail(task)">
+      <ion-row>
+        <ion-col>
+          <h5>{{task.campaign}}</h5>
+        </ion-col>
+        <ion-col text-right>
+          <p>{{task.due_date}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <h6>{{task.title}}</h6>
+        <div class="description">{{task.description}}</div>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

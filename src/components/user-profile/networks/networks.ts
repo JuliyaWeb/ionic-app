@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalController } from "ionic-angular";
 
 @Component({
   selector: 'networks',
@@ -6,11 +7,14 @@ import { Component } from '@angular/core';
 })
 export class NetworksComponent {
 
-  text: string;
+  public userNetworks: Array<any> = [];
 
-  constructor() {
-    console.log('Hello NetworksComponent Component');
-    this.text = 'Hello World';
+
+  constructor(private modalCtrl: ModalController) {
   }
 
+  openModal() {
+    let appModal = this.modalCtrl.create('');
+    appModal.present();
+  }
 }

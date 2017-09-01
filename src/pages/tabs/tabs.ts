@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { ProfilePage } from "../profile/profile";
 import { InsightsPage } from "../insights/insights";
-import { FeedPage } from "../feed/feed";
+// import { FeedPage } from "../feed/feed";
 import { NotificationsPage } from "../notifications/notifications";
 import { TasksPage } from "../tasks/tasks";
 

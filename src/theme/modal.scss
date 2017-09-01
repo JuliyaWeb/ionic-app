@@ -1,0 +1,23 @@
+@import "./variables";
+ion-modal {
+  background: rgba(0, 0, 0, 0.3);
+  .ion-modal-header {
+    .toolbar-title {
+      color: $main-color;
+      margin: 25px 0;
+    }
+    .icon-close {
+      color: $main-color;
+      font-size: 28px;
+      position: absolute;
+      right: 15px;
+      top: 10px;
+    }
+  }
+
+  .genres-modal {
+    .block-wrapper {
+      margin-top: 40px;
+    }
+  }
+}

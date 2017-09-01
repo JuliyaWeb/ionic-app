@@ -2,19 +2,19 @@
   <ion-title class="modal-title">What Genres do you like?</ion-title>
   <ion-icon class="icon-close" name="close" (click)="dismiss()"></ion-icon>
 </ion-header>
-<ion-content padding class="ion-modal-content">
+<ion-content padding class="ion-modal-content genres-modal">
   <div class="modal-detail" text-center>
     <ion-icon name="cube"></ion-icon>
     <h6 class="subtitle">{{interest.title}}</h6>
   </div>
-  <ion-item no-padding class="modal-select">
+  <ion-item no-padding class="default-select">
     <ion-label stacked>Select Genres</ion-label>
     <ion-select [(ngModel)]="genres" multiple="true" (ngModelChange)="onChange($event)">
       <ion-option *ngFor="let option of interest.options">{{option.text}}</ion-option>
     </ion-select>
   </ion-item>
-  <div margin-top class="block-wrapper">
-    <h6 class="subtitle">Your Selection</h6>
+  <div class="block-wrapper">
+    <h6 class="subtitle" text-center>Your Selection</h6>
     <hr class="line-shadow"/>
     <p class="selected-interests">{{selectedInterests}}</p>
   </div>

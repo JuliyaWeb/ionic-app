@@ -12,6 +12,7 @@ import { ShareTaskComponent } from './tasks/share-task/share-task';
 import { PostTaskComponent } from './tasks/post-task/post-task';
 import { CreateTaskComponent } from './tasks/create-task/create-task';
 import { ImageUploadComponent } from './image-upload/image-upload';
+import { AutocompleteComponent } from './autocomplete/autocomplete';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ImageUploadComponent } from './image-upload/image-upload';
     ShareTaskComponent,
     PostTaskComponent,
     CreateTaskComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    AutocompleteComponent
   ],
   imports: [
     IonicModule
@@ -43,11 +45,13 @@ import { ImageUploadComponent } from './image-upload/image-upload';
     ShareTaskComponent,
     PostTaskComponent,
     CreateTaskComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    AutocompleteComponent
   ],
   entryComponents: [
     InterestsModalComponent,
-    GenresModalComponent
+    GenresModalComponent,
+    AutocompleteComponent
   ]
 })
 export class ComponentsModule {

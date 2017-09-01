@@ -1,13 +1,15 @@
 import 'rxjs/add/operator/map';
 
 import { Injectable } from '@angular/core';
-import { Http } from "@angular/http";
+// import { Http } from "@angular/http";
 
 @Injectable()
 export class TaskService {
 
-  constructor(private _http: Http) {
+  constructor() {
   }
+  // constructor(private _http: Http) {
+  // }
 
   public getListTasks() {
     return testData;

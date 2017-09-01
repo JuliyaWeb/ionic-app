@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { InitProfileDataService } from "../shared/providers/init-profile-data";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
+import { ModalController } from "ionic-angular";
+import { AutocompleteComponent } from "../../autocomplete/autocomplete";
 
 @Component({
   selector: 'info',
@@ -9,6 +11,11 @@ import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 })
 export class InfoComponent {
   @Input() card;
+
+  address: any = {
+    place: '',
+    set: false,
+  };
 
   /* forms */
   public aboutForm: FormGroup;
@@ -26,6 +33,7 @@ export class InfoComponent {
   public selectinterestedInData: Array<any>;
 
   constructor(private formBuilder: FormBuilder,
+              private modalCtrl: ModalController,
               private _profileDataService: InitProfileDataService) {
   }
 
@@ -60,6 +68,20 @@ export class InfoComponent {
 
   };
 
+  public showModal() {
+    let modal = this.modalCtrl.create(AutocompleteComponent);
+    modal.onDidDismiss(data => {
+      if (data) {
+        this.basicInfoForm.controls['location'].patchValue(data.address);
+        console.log('data', data);
+        // this.address.place = data.description;
+        // get details
+        // this.getPlaceDetail(data.place_id);
+      }
+    });
+    modal.present();
+  }
+
   private _initAboutForm(): FormGroup {
     return this.formBuilder.group({
       'about': ['']
@@ -70,6 +92,7 @@ export class InfoComponent {
     return this.formBuilder.group({
       'age': ['', Validators.compose([Validators.maxLength(2)])],
       'gender': ['2'],
+      'location': [''],
       'interested': ['0'],
       'relationship_status': ['0']
     });

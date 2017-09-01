@@ -31,7 +31,7 @@ ion-card.card {
   background: $white-color;
   border: none;
 }
-
+/***** Side Menu *****/
 .side-menu {
   .content {
     background-color: $side-menu-color;
@@ -50,7 +50,7 @@ ion-card.card {
     }
   }
 }
-
+/***** Sub Nav *****/
 .sub-nav {
   .tabbar {
     background: $sub-nav-color;
@@ -63,19 +63,22 @@ ion-card.card {
     }
   }
 }
-
-ion-modal {
-  .ion-modal-header {
-    .toolbar-title {
-      color: $main-color;
-      margin: 25px 0;
-    }
-    .icon-close {
-      color: $main-color;
-      font-size: 28px;
-      position: absolute;
-      right: 15px;
-      top: 10px;
+/***** Form, inputs, fields *****/
+.default-select {
+  .select {
+    border: 1px solid;
+    padding: 8px;
+    font-size: 14px;
+    color: $main-color;
+    .select-icon {
+      width: 16px;
+      .select-icon-inner {
+        left: 0;
+        border-top: 7px solid;
+        border-right: 7px solid transparent;
+        border-left: 7px solid transparent;
+        color: $main-color;
+      }
     }
   }
 }
@@ -85,3 +88,4 @@ hr.line-shadow {
   box-shadow: 0 1px 5px 2px rgba(153, 153, 153, 0.3);
   background-color: rgba(0, 0, 0, 0.2);
 }
+

@@ -1,3 +1,4 @@
 <div>
   <button ion-button full (click)="presentActionSheet()">Lets take a picture!</button>
+  <img [src]="captureDataUrl" *ngIf="captureDataUrl"/>
 </div>

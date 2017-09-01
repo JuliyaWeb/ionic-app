@@ -9,6 +9,7 @@ import { ActionSheetController } from "ionic-angular";
 export class ImageUploadComponent {
 
   public imgSrc: any;
+  public captureDataUrl: any;
 
   constructor(private camera: Camera, private actionSheetCtrl: ActionSheetController) {
   }
@@ -51,7 +52,7 @@ export class ImageUploadComponent {
 
     this.camera.getPicture(options).then((imageData) => {
       this.imgSrc = imageData;
-      console.log(this.imgSrc);
+      this.captureDataUrl = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
     });
   }

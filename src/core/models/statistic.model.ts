@@ -27,10 +27,10 @@ export class Statistic {
 		this.female_percent = data.female;
 	}
 
-    private _calculateAudienceGenger(){
-    	if (!this.isValid) return;
-    	const total = this.female + this.male;
-    	this.female_percent = this.female * 100 / total;
-    	this.male_percent = this.male * 100 / total;    	
-    }
+    // private _calculateAudienceGenger(){
+    // 	if (!this.isValid) return;
+    // 	const total = this.female + this.male;
+    // 	this.female_percent = this.female * 100 / total;
+    // 	this.male_percent = this.male * 100 / total;
+    // }
 }

@@ -5,6 +5,7 @@ info {
     .label {
       color: $main-color;
       font-size: 14px;
+      margin: 0 15px 0 0;
     }
     .item-block {
       padding: 0;
@@ -23,5 +24,9 @@ info {
     padding: 0 8px;
     flex: 1;
     max-width: 100%;
+  }
+
+  .item-select .input-wrapper {
+    display: inline-block;
   }
 }

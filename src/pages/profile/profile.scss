@@ -1,8 +1,30 @@
 @import "../../theme/variables";
 
 page-profile {
+  .header-md::after {
+    display: none;
+  }
+  .profile-header {
+    position: relative;
+    .edit-profile-image {
+      background: rgba(255, 255, 255, 0.7);
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin: 0 auto;
+      right: 0;
+      left: 0;
+    }
+  }
+  .configs {
+    .icon {
+      font-size: 18px;
+    }
 
+  }
 }
+
 .profile-tab-bar {
   .segment-button {
     color: $main-color;
@@ -17,9 +39,6 @@ page-profile {
 
 .profile-page-content {
   ion-card {
-    .card-icons {
-
-    }
   }
 }
 

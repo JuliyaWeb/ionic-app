@@ -1,0 +1,23 @@
+<ion-header padding class="ion-modal-header">
+  <ion-title class="modal-title">Connect an Account:</ion-title>
+  <ion-icon class="icon-close" name="close" (click)="dismiss()"></ion-icon>
+</ion-header>
+<ion-content padding class="ion-modal-content network-modal">
+  <div class="modal-detail" text-center>
+    <ion-icon name="{{network.icon}}"></ion-icon>
+    <h6 class="subtitle">{{network.title}}</h6>
+  </div>
+
+  <form [formGroup]="form">
+    <ion-item no-padding>
+      <ion-label stacked>{{network.title}} Channel URL</ion-label>
+      <ion-input formControlName="network_url" type="text"></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label stacked>Description</ion-label>
+      <!--<p>Write a short description about your Twitch Channel</p>-->
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+    <button ion-button margin-top full>Confirm Account</button>
+  </form>
+</ion-content>

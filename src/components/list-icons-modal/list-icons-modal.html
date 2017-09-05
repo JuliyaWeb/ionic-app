@@ -1,12 +1,12 @@
 <ion-header padding class="ion-modal-header">
-  <ion-title class="modal-title">Tell us what you’re Into:</ion-title>
+  <ion-title class="modal-title">{{modalData.title}}</ion-title>
   <ion-icon class="icon-close" name="close" (click)="dismiss()"></ion-icon>
 </ion-header>
-<ion-content padding class="ion-modal-content">
+<ion-content padding class="ion-modal-content list-icons-modal">
   <ion-row>
-    <ion-col col-6 *ngFor="let item of listInterests; let i = index" class="modal-col">
+    <ion-col col-6 *ngFor="let item of listIcons; let i = index" class="modal-col">
       <div class="inner-col" text-center (click)="openModal(i)">
-        <ion-icon name="cube"></ion-icon>
+        <ion-icon name="{{item.icon}}"></ion-icon>
         <h6 class="subtitle">{{item.title}}</h6>
       </div>
     </ion-col>

@@ -52,55 +52,54 @@ export class InterestsDataService {
     /*  List Interests Data */
     return this._interestsData = [{
       title: 'Books',
-      icon: '',
+      icon: 'cube',
       options: this._booksData
     }, {
       slug: '1',
       title: 'Films',
-      icon: '',
+      icon: 'cube',
       options: this._booksData
     }, {
       slug: '2',
       title: 'Games',
-      icon: '',
+      icon: 'cube',
       options: this._booksData
     }, {
       slug: '3',
       title: 'Music',
-      icon: '',
+      icon: 'cube',
       options: this._booksData
     }, {
       slug: '4',
       title: 'Fitness & Wellness',
-      icon: '',
+      icon: 'cube',
       options: this._booksData
     }, {
       slug: '5',
       title: 'Food & Drink',
-      icon: '',
+      icon: 'cube',
       options: this._booksData
     }, {
       slug: '6',
       title: 'Shopping & Fashion',
-      icon: '',
+      icon: 'cube',
       options: this._booksData
     }, {
       slug: '7',
       title: 'Sports & Outdoors',
-      icon: '',
+      icon: 'cube',
       options: this._booksData
     }, {
       slug: '8',
       title: 'Travel',
-      icon: '',
+      icon: 'cube',
       options: this._booksData
     }, {
       slug: '9',
       title: 'Technology',
-      icon: '',
+      icon: 'cube',
       options: this._booksData
     }]
   }
-
 
 }

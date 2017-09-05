@@ -4,6 +4,11 @@ $assets-root: 'assets/';
 $images-root: $assets-root + 'img/';
 $font-path: "../assets/fonts";
 
+// Font Awesome
+// --------------------------------------------------
+$fa-font-path: $font-path;
+@import "font-awesome";
+
 //  App LineUp Mobile Theme Colors
 // --------------------------------------------------
 $main-color: #232e61;
@@ -12,6 +17,7 @@ $text-color: #242424;
 
 $body-bg-gradient-color-1: #1e5799;
 $body-bg-gradient-color-2:  #a5c9e5;
+$input-bg-color: #f6f6f6;
 
 $side-menu-color: #dddddd;
 $sub-nav-color: #353535;

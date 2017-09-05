@@ -18,7 +18,8 @@
     "node_modules/cordova-plugin-camera/types/index.d.ts",
     "node_modules/cordova-plugin-camera/types/index.d.ts",
     "node_modules/cordova-plugin-camera/types/index.d.ts",
-    "node_modules/cordova-plugin-camera/types/index.d.ts"
+    "node_modules/cordova-plugin-camera/types/index.d.ts",
+    "node_modules/cordova-plugin-file-transfer/types/index.d.ts"
   ],
   "exclude": [
     "node_modules"

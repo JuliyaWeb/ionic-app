@@ -15,7 +15,6 @@ export class GenresModalComponent {
   constructor(private _viewCtrl: ViewController,
               private params: NavParams,
               private _interestsData: InterestsDataService) {
-
   }
 
   ngOnInit(): void {

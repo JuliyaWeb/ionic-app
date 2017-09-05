@@ -3,7 +3,6 @@ import { IonicModule } from "ionic-angular";
 import { InfoComponent } from './user-profile/info/info';
 import { NetworksComponent } from './user-profile/networks/networks';
 import { InterestsComponent } from './user-profile/interests/interests';
-import { InterestsModalComponent } from './user-profile/interests/list-interests-modal/list-interests-modal';
 import { GenresModalComponent } from './user-profile/interests/genres-modal/genres-modal';
 import { EventTaskComponent } from './tasks/event-task/event-task';
 import { AquisitionTaskComponent } from './tasks/aquisition-task/aquisition-task';
@@ -13,13 +12,15 @@ import { PostTaskComponent } from './tasks/post-task/post-task';
 import { CreateTaskComponent } from './tasks/create-task/create-task';
 import { ImageUploadComponent } from './image-upload/image-upload';
 import { AutocompleteComponent } from './autocomplete/autocomplete';
+import { ListIconsModalComponent } from './list-icons-modal/list-icons-modal';
+import { NetworkModalComponent } from './user-profile/networks/network-modal/network-modal';
+import { FaIconComponent } from './fa-icon/fa-icon';
 
 @NgModule({
   declarations: [
     InfoComponent,
     NetworksComponent,
     InterestsComponent,
-    InterestsModalComponent,
     GenresModalComponent,
     EventTaskComponent,
     AquisitionTaskComponent,
@@ -28,7 +29,10 @@ import { AutocompleteComponent } from './autocomplete/autocomplete';
     PostTaskComponent,
     CreateTaskComponent,
     ImageUploadComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    ListIconsModalComponent,
+    NetworkModalComponent,
+    FaIconComponent
   ],
   imports: [
     IonicModule
@@ -37,7 +41,6 @@ import { AutocompleteComponent } from './autocomplete/autocomplete';
     InfoComponent,
     NetworksComponent,
     InterestsComponent,
-    InterestsModalComponent,
     GenresModalComponent,
     EventTaskComponent,
     AquisitionTaskComponent,
@@ -46,12 +49,16 @@ import { AutocompleteComponent } from './autocomplete/autocomplete';
     PostTaskComponent,
     CreateTaskComponent,
     ImageUploadComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    ListIconsModalComponent,
+    NetworkModalComponent,
+    FaIconComponent
   ],
   entryComponents: [
-    InterestsModalComponent,
     GenresModalComponent,
-    AutocompleteComponent
+    NetworkModalComponent,
+    AutocompleteComponent,
+    ListIconsModalComponent
   ]
 })
 export class ComponentsModule {

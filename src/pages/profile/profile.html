@@ -3,15 +3,28 @@
     <button menuToggle ion-button icon-only>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Profile</ion-title>
+    <div text-right class="configs">
+      <button ion-button clear small no-margin *ngIf="!editProfile" (click)="toggleEditProfile()">
+        <fa-icon name="cog" class="icon"></fa-icon>
+      </button>
+      <div *ngIf="editProfile" class="edit-row">
+        <button ion-button clear small>Edit</button>
+        <button ion-button clear small>Save</button>
+        <button ion-button clear small (click)="toggleEditProfile()">
+          <ion-icon name='ios-close-circle' class="icon"></ion-icon>
+        </button>
+      </div>
+    </div>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <div class="profile-header">
+    <div class="edit-profile-image" *ngIf="editProfile">
+      <image-upload [icon]="'pencil'" (outputImg)="getImgSrc($event)"></image-upload>
+    </div>
     <div class="profile-image">
-      <img src="https://s3.amazonaws.com/ionic-io-static/9TxJELnATnW9H3MZZfdG_Profile_avatar_placeholder_large.png"
-           width="30%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+      <img [src]="userAvatar" width="110" height="110" style="display: block; margin-left: auto; margin-right: auto;">
     </div>
   </div>
   <div class="profile-page-content">
@@ -36,14 +49,14 @@
               <ion-col text-left>
                 <ion-card-title color="primary">{{card.title}}</ion-card-title>
               </ion-col>
-              <ion-col text-right class="card-icons">
+              <ion-col text-right class="configs">
                 <button ion-button clear small no-margin *ngIf="!card.edit" (click)="toggleCard(card)">
-                  <ion-icon name='cog'></ion-icon>
+                  <fa-icon name="cog" class="icon"></fa-icon>
                 </button>
                 <div *ngIf="card.edit" class="edit-card">
                   <button ion-button clear small>Save</button>
                   <button ion-button clear small (click)="toggleCard(card)">
-                    <ion-icon name='ios-close-circle'></ion-icon>
+                    <ion-icon name='ios-close-circle' class="icon"></ion-icon>
                   </button>
                 </div>
               </ion-col>
@@ -63,3 +76,4 @@
     </div>
   </div>
 </ion-content>
+

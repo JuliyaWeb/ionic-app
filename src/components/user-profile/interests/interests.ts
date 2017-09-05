@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { InterestsDataService } from "../shared";
 import { ModalController } from "ionic-angular";
-import { InterestsModalComponent } from "./list-interests-modal/list-interests-modal";
+import { ListIconsModalComponent } from "../../list-icons-modal/list-icons-modal";
 
 
 @Component({
   selector: 'interests',
   templateUrl: './interests.html',
-  providers: [InterestsDataService]
 })
 export class InterestsComponent {
 
@@ -18,7 +16,11 @@ export class InterestsComponent {
   }
 
   openModal() {
-    let appModal = this.modalCtrl.create(InterestsModalComponent);
+    const modalParams = {
+      title: 'Tell us what you’re Into:',
+      type: 'interest',
+    };
+    let appModal = this.modalCtrl.create(ListIconsModalComponent, {data: modalParams});
     appModal.present();
   }
 

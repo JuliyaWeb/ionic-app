@@ -12,11 +12,6 @@ import { AutocompleteComponent } from "../../autocomplete/autocomplete";
 export class InfoComponent {
   @Input() card;
 
-  address: any = {
-    place: '',
-    set: false,
-  };
-
   /* forms */
   public aboutForm: FormGroup;
   public basicInfoForm: FormGroup;
@@ -74,9 +69,6 @@ export class InfoComponent {
       if (data) {
         this.basicInfoForm.controls['location'].patchValue(data.address);
         console.log('data', data);
-        // this.address.place = data.description;
-        // get details
-        // this.getPlaceDetail(data.place_id);
       }
     });
     modal.present();

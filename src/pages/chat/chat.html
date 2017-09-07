@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle ion-button icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Chat</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-scroll scrollY="true" class="messages">
+    <div *ngFor="let item of messages" class="message {{item.ownership}}">
+      <img class="picture" [src]="item.picture">
+      <p class="message-bubble">{{item.content}}</p>
+    </div>
+  </ion-scroll>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar class="messages-page-footer">
+    <ion-input [(ngModel)]="message" class="message-editor" placeholder="Type a message"></ion-input>
+    <ion-buttons end>
+      <button ion-button icon-only [disabled]="!message" (click)="sendMessage(message)">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

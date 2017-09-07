@@ -1,0 +1,69 @@
+@import "../../theme/variables";
+page-chat {
+  .messages {
+    .picture {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .message-bubble {
+      padding: 16px;
+      border-radius: 5px;
+      margin: 0;
+      max-width: 230px;
+      display: inline-block;
+      &:before {
+        position: absolute;
+        left: 62px;
+        content: '';
+        width: 0;
+        height: 0;
+        border-width: 7px 14px 7px 0;
+        border-style: solid;
+        border-color: transparent #f4f4f4;
+      }
+    }
+  }
+  ion-scroll {
+    margin: 0 -16px;
+  }
+  .message {
+    overflow: hidden;
+    position: relative;
+    min-height: 60px;
+    margin-bottom: 30px;
+    padding-bottom: 5px;
+    &.addresser {
+      padding-left: 75px;
+      .message-bubble {
+        background: #f4f4f4;
+        color: $main-color;
+        text-align: left;
+        box-shadow: $shadow;
+      }
+      .picture {
+        left: 0;
+      }
+    }
+    &.mine {
+      text-align: right;
+      padding-right: 75px;
+      .message-bubble {
+        background: $main-color;
+        color: $white-color;
+        text-align: left;
+        &:before {
+          left: auto;
+          right: 62px;
+          border-width: 7px 0 7px 14px;
+          border-color: transparent $main-color;
+        }
+      }
+      .picture {
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+}

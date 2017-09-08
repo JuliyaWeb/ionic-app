@@ -1,34 +1,24 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Welcome</ion-title>
-  </ion-navbar>
-</ion-header>
 <ion-content>
   <ion-slides pager>
-    <ion-slide>
-      <img src="../assets/img/logo/lineup-logo.png" class="slide-image"/>
-      <h2 class="animated fadeIn"> Welcome to Line Up
-        <br> Test, Influence, Collaborate.
-        <br> Be part in shaping the Brands that you love.
-      </h2>
-    </ion-slide>
-    <ion-slide>
-      <h1>Slide 2</h1>
-    </ion-slide>
-    <ion-slide>
-      <h1>Slide 3</h1>
-    </ion-slide>
-    <ion-slide>
-      <h1>Slide 4</h1>
-    </ion-slide>
-    <ion-slide>
-      <h1>Slide 5</h1>
+    <ion-slide *ngFor="let slide of sliders; let i=index" class="slide">
+      <div class="info-block">
+        <span class="icon"><fa-icon [name]="slide.icon"></fa-icon></span>
+        <h2>{{slide.text}}</h2>
+      </div>
+      <!--<img src="../assets/img/logo/lineup-logo.png" class="slide-image"/>-->
     </ion-slide>
   </ion-slides>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <button ion-button full (click)="goToLogin()">Get Started</button>
+    <ion-row>
+      <ion-col col-5>
+        <button ion-button full (click)="goToLogin()">Log In</button>
+      </ion-col>
+      <ion-col col-7>
+        <button ion-button full color="danger" (click)="goToRegister()">Get Started</button>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-footer>

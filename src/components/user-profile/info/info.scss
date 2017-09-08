@@ -10,6 +10,12 @@ info {
     .item-block {
       padding: 0;
       font-size: 14px;
+      &:first-child {
+        border-top: none;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
       .item-inner {
         padding-right: 0;
       }

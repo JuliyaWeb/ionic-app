@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie';
-
+import { Storage } from '@ionic/storage';
 import { Config } from '../config/config';
 import { User } from "../models/user.model";
 
@@ -9,9 +9,10 @@ export class Session {
   private _AUTH_COOKIE_NAME: string;
   private _USER_STORAGE_NAME: string;
 
-  constructor(private _config: Config, private _cookieService: CookieService) {
+  constructor(private _config: Config, private _cookieService: CookieService,  private storage: Storage) {
     this._AUTH_COOKIE_NAME = this._config.AUTH_COOKIE_NAME;
     this._USER_STORAGE_NAME = this._config.USER_STORAGE_NAME;
+    console.log(storage);
   }
 
   clean() {

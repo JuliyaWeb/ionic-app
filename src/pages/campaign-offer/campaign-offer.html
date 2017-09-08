@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle ion-button icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Campaign Offer</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="campaign-header">
+    <div class="notice-picture">
+      <img class="picture" [src]="campaign.picture">
+    </div>
+    <div class="notice-info">
+      <h4 class="subtitle addresser">{{campaign.lastMessage.addresser}}</h4>
+    </div>
+  </div>
+  <hr/>
+  <div class="campaign-detail">
+    <h2>Campaign Title</h2>
+    <div class="campaign-description">
+      <label class="label-title">Description</label>
+      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+        praesentium voluptatum deleniti atque corrupti quos dolores et.</p>
+    </div>
+  </div>
+  <hr/>
+  <div class="campaign-tasks">
+    <h2>Tasks</h2>
+    <div class="task" *ngFor="let task of listTasks">
+      <ion-row>
+        <ion-col><h5>{{task.title}}</h5></ion-col>
+        <ion-col text-right><h5>{{task.task_type_display}}</h5></ion-col>
+      </ion-row>
+      <ion-row>
+        <label class="label-title">Description</label>
+        <p>{{task.description}}</p>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <label class="label-title">Reward</label>
+          <p>Free Entry on list</p>
+        </ion-col>
+        <ion-col>
+          <label class="label-title">Due Date</label>
+          <p>{{task.due_date}}</p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <div class="action-button">
+    <button ion-button color="success">Accept</button>
+    <button ion-button>Negotiate</button>
+    <button ion-button color="danger">Decline</button>
+  </div>
+</ion-content>

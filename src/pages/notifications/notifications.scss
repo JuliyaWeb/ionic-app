@@ -1,3 +1,24 @@
 page-notifications {
 
 }
+
+.notice {
+  .card-content {
+    display: flex;
+  }
+  .notice-header {
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .notice-detail {
+    flex: 1;
+  }
+  .notice-picture {
+    margin-right: 10px;
+    img {
+      width: 70px;
+      height: 70px;
+
+    }
+  }
+}

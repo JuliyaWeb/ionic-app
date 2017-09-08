@@ -1,0 +1,24 @@
+page-campaign-offer {
+  ion-col.col {
+    padding: 0;
+  }
+  .campaign-header {
+    overflow: hidden;
+  }
+  .notice-picture {
+    float: left;
+  }
+  .task {
+    padding: 10px 0;
+    margin: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .action-button {
+    display: flex;
+    margin-top: 30px;
+    .button {
+      flex: 1;
+    }
+  }
+
+}

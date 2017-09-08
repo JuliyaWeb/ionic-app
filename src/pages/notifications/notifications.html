@@ -6,7 +6,22 @@
     <ion-title>Notifications</ion-title>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  Nothing Here!
+<ion-content>
+  <ion-card *ngFor="let item of notice" class="notice">
+    <ion-card-content (click)="goToDetail(item)">
+      <div class="notice-picture">
+        <img class="picture" [src]="item.picture">
+      </div>
+      <div class="notice-detail">
+        <div class="notice-header">
+          <h3 class="title notice-type" float-left>{{item.lastMessage.type}}</h3>
+          <span class="card-date" text-right>{{item.lastMessage.createdAt}}</span>
+        </div>
+        <div class="notice-info">
+          <h4 class="subtitle addresser">{{item.lastMessage.addresser}}</h4>
+          <p>{{item.lastMessage.content}}</p>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

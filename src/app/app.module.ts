@@ -7,6 +7,9 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CookieModule } from 'ngx-cookie';
+import { IonicStorageModule } from "@ionic/storage";
+import { Push } from '@ionic-native/push';
+import { Deeplinks } from "@ionic-native/deeplinks";
 
 import { APP_PAGES } from "../pages/index";
 import { ComponentsModule } from "../components/components.module";
@@ -21,8 +24,11 @@ import { APP_PROVIDERS, ApiHttp, Session, Config } from "../core/providers";
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      tabsHideOnSubPages: true,
+    }),
     CookieModule.forRoot(),
+    IonicStorageModule.forRoot(),
     ComponentsModule
   ],
   bootstrap: [IonicApp],
@@ -34,6 +40,8 @@ import { APP_PROVIDERS, ApiHttp, Session, Config } from "../core/providers";
     StatusBar,
     SplashScreen,
     Camera,
+    Deeplinks,
+    Push,
     ...APP_PROVIDERS,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: Http, useClass: ApiHttp, deps: [XHRBackend, RequestOptions, Session, Config]},

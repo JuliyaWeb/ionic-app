@@ -10,7 +10,7 @@ body {
   height: 100%;
   //font-family: $font-family;
   font-size: 14px;
-  color: $text-color;
+  color: $main-color;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -18,16 +18,28 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 p, .card p, .item p {
-  color: $text-color;
+  color: $main-color;
 }
 
 fa-icon, ion-icon {
   color: $main-color;
 }
 
+ion-scroll {
+  height: 100%;
+}
+
 ion-card.card {
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: $shadow;
   margin-bottom: 20px;
+
+  .card-date {
+    color: $text-grey-color;
+    display: block;
+  }
+  .title, .subtitle {
+    color: $main-color;
+  }
 }
 
 .header .toolbar-background {
@@ -76,7 +88,7 @@ ion-card.card {
     padding: 6px 8px;
     font-size: 14px;
     color: $main-color;
-    background: $input-bg-color;
+    background: $grey-bg-color;
     .select-icon {
       width: 16px;
       .select-icon-inner {
@@ -94,7 +106,7 @@ ion-card.card {
   .text-input {
     padding: 6px 8px;
     margin: 0;
-    background: $input-bg-color;
+    background: $grey-bg-color;
     font-size: 14px;
   }
 
@@ -113,5 +125,18 @@ hr.line-shadow {
 
 .item-input.item-input-has-focus {
   box-shadow: none;
+}
+
+.label-title {
+  color: $text-grey-color;
+  font-weight: bold;
+}
+
+img.picture {
+  border-radius: 50%;
+}
+
+.button {
+  border-radius: 0;
 }
 

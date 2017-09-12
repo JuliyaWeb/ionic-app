@@ -1,0 +1,14 @@
+poll-survey-task {
+  .one-to-ten {
+    .item {
+      width: 20%;
+      display: inline-block;
+      border-top: 1px solid;
+      border-left: 1px solid;
+    }
+  }
+  ion-select {
+    width: 100%;
+    min-width: 100%;
+  }
+}

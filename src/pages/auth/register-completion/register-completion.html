@@ -1,0 +1,28 @@
+<ion-content padding>
+  <div class="content-inner">
+    <img src="../../assets/img/logo/lineup-logo-white.svg" class="slide-image"/>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form,form.value)" *ngIf="isReady" class="auth-form">
+      <ion-list>
+        <ion-item>
+          <ion-input formControlName="username" type="text" placeholder="Name"
+                     [class.invalid]="!form.controls.username.valid"></ion-input>
+        </ion-item>
+        <span *ngIf="formErrors && formErrors.username">
+        <span ion-text color="danger">{{ formErrors.username }}</span>
+        </span>
+        <ion-item>
+          <ion-input formControlName="password" type="password" placeholder="Password"
+                     [class.invalid]="!form.controls.password.valid"></ion-input>
+        </ion-item>
+        <span *ngIf="formErrors && formErrors.password">
+        <span ion-text color="danger">{{ formErrors.password }}</span>
+        </span>
+      </ion-list>
+      <button ion-button block color="danger" [disabled]="!form.valid">Sign Up</button>
+      <a class="btn btn-link">DONE !</a>
+    </form>
+  </div>
+</ion-content>
+
+
+

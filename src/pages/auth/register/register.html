@@ -1,45 +1,26 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Register</ion-title>
-  </ion-navbar>
-</ion-header>
 <ion-content padding>
-  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" *ngIf="showForm">
-    <ion-list>
-      <ion-item>
-        <ion-input formControlName="username" type="text" placeholder="Name"
-                   [class.invalid]="!form.controls.username.valid"></ion-input>
-      </ion-item>
-      <span *ngIf="formErrors && formErrors.username">
-        <span ion-text color="danger">{{ formErrors.username }}</span>
-      </span>
+  <div class="content-inner">
+    <img src="../../assets/img/logo/lineup-logo-white.svg" class="logo"/>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" *ngIf="showForm" class="auth-form">
+      <ion-list>
+        <ion-item>
+          <ion-input formControlName="email" type="email" placeholder="Email"
+                     [class.invalid]="!form.controls.email.valid"></ion-input>
+        </ion-item>
+        <span *ngIf="formErrors && formErrors.email" class="error">
+          <span ion-text color="danger">{{ formErrors.email }}</span>
+        </span>
+      </ion-list>
+      <button ion-button block color="danger" [disabled]="!form.valid">Sign Up</button>
+      <a class="btn btn-link" (click)="goToLogin()">Already have an Account?</a>
+    </form>
 
-      <ion-item>
-        <ion-input formControlName="email" type="email" placeholder="Email"
-                   [class.invalid]="!form.controls.email.valid"></ion-input>
-      </ion-item>
-      <span *ngIf="formErrors && formErrors.email">
-        <span ion-text color="danger">{{ formErrors.email }}</span>
-      </span>
-
-      <ion-item>
-        <ion-input formControlName="password" type="password" placeholder="Password"
-                   [class.invalid]="!form.controls.password.valid"></ion-input>
-      </ion-item>
-    </ion-list>
-    <span *ngIf="formErrors && formErrors.password">
-      <span ion-text color="danger">{{ formErrors.password }}</span>
-    </span>
-
-    <div padding>
-      <button ion-button block [disabled]="!form.valid">Sign Up</button>
+    <div text-center *ngIf="!showForm">
+      <h4>Your registration was successful!</h4>
+      <p>You should now receive the email with further instructions.</p>
     </div>
-    <a class="btn btn-link" (click)="goToLogin()">Already have an Account?</a>
-  </form>
-
-  <div text-center *ngIf="!showForm">
-    <h4>Your registration was successful!</h4>
-    <p>You should now receive the email with further instructions.</p>
-    <a class="btn btn-link" (click)="goToLogin()">Return to Login Page</a>
   </div>
 </ion-content>
+
+
+

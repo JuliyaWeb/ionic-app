@@ -14,7 +14,7 @@ export class NetworkModalComponent {
   public network: Object;
   public form: FormGroup;
 
-  constructor(private _viewCtrl: ViewController,
+  constructor(private viewCtrl: ViewController,
               private params: NavParams,
               private fb: FormBuilder,
               private fh: FormHelper,
@@ -34,7 +34,7 @@ export class NetworkModalComponent {
   }
 
   public dismiss() {
-    this._viewCtrl.dismiss();
+    this.viewCtrl.dismiss();
   }
 
 }

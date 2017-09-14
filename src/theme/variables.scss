@@ -2,12 +2,19 @@
 // --------------------------------------------------
 $assets-root: 'assets/';
 $images-root: $assets-root + 'img/';
-$font-path: "../assets/fonts";
+$font-path: "../assets/fonts/";
 
 // Font Awesome
 // --------------------------------------------------
 $fa-font-path: $font-path;
 @import "font-awesome";
+
+//  General Fonts
+// --------------------------------------------------
+$font-family-title: 'Circular Bold', sans-serif;
+$font-family-medium: 'Rubik Medium', sans-serif;
+$font-family-regular: 'Rubik Regular', sans-serif;
+$font-family-light: 'Rubik Light', sans-serif;
 
 //  App LineUp Mobile Theme Colors
 // --------------------------------------------------
@@ -18,7 +25,7 @@ $text-color: #242424;
 
 $body-bg-gradient-color-1: #1e5799;
 $body-bg-gradient-color-2:  #a5c9e5;
-$grey-bg-color: #f6f6f6;
+$grey-bg-color: #f3f3f3;
 
 $side-menu-color: #dddddd;
 $sub-nav-color: #353535;
@@ -72,5 +79,5 @@ $colors: (
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
+//@import "roboto";
 @import "noto-sans";

@@ -19,7 +19,8 @@ export class TasksPage {
 
   public goToDetail(task) {
     const navData = {task: task};
-    this.navCtrl.setRoot(TaskDetailPage, navData)
+    this.navCtrl.push(TaskDetailPage, navData)
+    // this.navCtrl.setRoot(TaskDetailPage, navData)
   }
 
 }

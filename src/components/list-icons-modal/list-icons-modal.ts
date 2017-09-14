@@ -14,25 +14,25 @@ export class ListIconsModalComponent {
   public listIcons: Array<any>;
   public modalData: Object;
 
-  constructor(private _viewCtrl: ViewController,
-              private _modalCtrl: ModalController,
-              private _params: NavParams,
+  constructor(private viewCtrl: ViewController,
+              private modalCtrl: ModalController,
+              private params: NavParams,
               private _networkData: NetworksDataService,
               private _interestData: InterestsDataService) {
   }
 
   ngOnInit(): void {
-    this.modalData = this._params.get('data');
+    this.modalData = this.params.get('data');
     this.listIcons = (this.modalData['type'] == 'interest') ? this._interestData.getInterestsData() : this._networkData.getNetworksData();
   }
 
   public dismiss() {
-    this._viewCtrl.dismiss();
+    this.viewCtrl.dismiss();
   }
 
   public openModal(index) {
     const component = (this.modalData['type'] == 'interest') ? GenresModalComponent : NetworkModalComponent;
-    let appModal = this._modalCtrl.create(component, {index: index});
+    let appModal = this.modalCtrl.create(component, {index: index});
     appModal.present();
   }
 }

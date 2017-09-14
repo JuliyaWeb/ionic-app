@@ -1,3 +1,16 @@
 page-task-detail {
-
+  .row {
+    ion-icon, fa-icon {
+      font-size: 22px;
+      margin-right: 10px;
+    }
+    p {
+      margin: 5px 0;
+    }
+  }
+  .row-images {
+    .row {
+      margin: 0 -5px;
+    }
+  }
 }

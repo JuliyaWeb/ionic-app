@@ -32,7 +32,7 @@ const testData = [
     "title": "Task Title",
     "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas mo- lestias excepturi sint occaecati cupiditate non.",
     "due_date": "2017-08-29",
-    "task_type": 1,
+    "task_type": 6,
     "campaign": 'Campaign Title',
     "task_type_display": "Type Task",
 
@@ -41,7 +41,7 @@ const testData = [
     "title": "Task Title",
     "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas mo- lestias excepturi sint occaecati cupiditate non.",
     "due_date": "2017-08-29",
-    "task_type": 2,
+    "task_type": 8,
     "campaign": 'Campaign Title',
     "task_type_display": "Type Task",
 

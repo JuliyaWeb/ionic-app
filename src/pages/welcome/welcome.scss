@@ -11,6 +11,7 @@ page-welcome {
   }
   .toolbar {
     padding: 0;
+    min-height: 100%;
     .toolbar-background {
       border: none;
     }
@@ -27,6 +28,8 @@ page-welcome {
     .info-block {
       position: absolute;
       top: 70px;
+      left: 0;
+      right: 0;
     }
     .icon {
       width: 40px;

@@ -1,0 +1,30 @@
+//  Circular
+// --------------------------------------------------
+@font-face {
+  font-family: 'Circular Bold';
+  src: url(#{$font-path}circular/circular-std-bold.ttf) format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+//  Rubik
+// --------------------------------------------------
+@font-face {
+  font-family: 'Rubik Medium';
+  src: url(#{$font-path}rubik/rubik-medium.ttf) format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rubik Regular';
+  src: url(#{$font-path}rubik/rubik-regular.ttf) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rubik Light';
+  src: url(#{$font-path}rubik/rubik-light.ttf) format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+

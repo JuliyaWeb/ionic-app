@@ -15,6 +15,8 @@ import { AutocompleteComponent } from './autocomplete/autocomplete';
 import { ListIconsModalComponent } from './list-icons-modal/list-icons-modal';
 import { NetworkModalComponent } from './user-profile/networks/network-modal/network-modal';
 import { FaIconComponent } from './fa-icon/fa-icon';
+import { PollSurveyTaskComponent } from './tasks/poll-survey-task/poll-survey-task';
+import { CreateTaskModalComponent } from './tasks/create-task/create-task-modal/create-task-modal';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { FaIconComponent } from './fa-icon/fa-icon';
     AutocompleteComponent,
     ListIconsModalComponent,
     NetworkModalComponent,
-    FaIconComponent
+    FaIconComponent,
+    PollSurveyTaskComponent,
+    CreateTaskModalComponent
   ],
   imports: [
     IonicModule
@@ -52,13 +56,16 @@ import { FaIconComponent } from './fa-icon/fa-icon';
     AutocompleteComponent,
     ListIconsModalComponent,
     NetworkModalComponent,
-    FaIconComponent
+    FaIconComponent,
+    PollSurveyTaskComponent,
+    CreateTaskModalComponent
   ],
   entryComponents: [
     GenresModalComponent,
     NetworkModalComponent,
     AutocompleteComponent,
-    ListIconsModalComponent
+    ListIconsModalComponent,
+    CreateTaskModalComponent
   ]
 })
 export class ComponentsModule {

@@ -9,24 +9,29 @@
   <div class="answer-section">
     <h4>Your Answer*</h4>
     <label>{{label}}</label>
+    <!--************************************************-->
     <ion-textarea ([ngModel])="textBox"></ion-textarea>
-    <ion-list radio-group [(ngModel)]="singleChoice">
+    <!--************************************************-->
+    <ion-list class="radio-group" radio-group [(ngModel)]="singleChoice">
       <ion-item *ngFor="let item of dataList">
         <ion-label>{{item.text}}</ion-label>
         <ion-radio value="{{item.id}}"></ion-radio>
       </ion-item>
     </ion-list>
+    <!--************************************************-->
     <ion-list>
       <ion-item *ngFor="let item of dataList">
         <ion-label>{{item.text}}</ion-label>
         <ion-checkbox (ionChange)="onChangeCheckBox(item.id, $event.checked)"></ion-checkbox>
       </ion-item>
     </ion-list>
+    <!--************************************************-->
     <ion-item no-padding class="default-select">
       <ion-select [(ngModel)]="dropDownList" (ngModelChange)="onChangeDropDown($event)">
         <ion-option *ngFor="let option of dataList">{{option.text}}</ion-option>
       </ion-select>
     </ion-item>
+    <!--************************************************-->
     <ion-list radio-group [(ngModel)]="singleChoice" class="one-to-ten">
       <ion-item *ngFor="let item of dataList">
         <ion-label>{{item.id}}</ion-label>

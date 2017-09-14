@@ -3,13 +3,26 @@
 info {
   .card-inner {
     .label {
-      color: $main-color;
       font-size: 14px;
       margin: 0 15px 0 0;
+      label {
+        color: $main-color;
+        font-family: $font-family-medium;
+      }
+      p {
+        color: #000;
+      }
+    }
+    .profile-info .item-block {
+      padding-bottom: 20px;
+    }
+    .form-edit .item-block {
+      padding-bottom: 10px;
     }
     .item-block {
       padding: 0;
       font-size: 14px;
+      min-height: inherit;
       &:first-child {
         border-top: none;
       }
@@ -24,12 +37,24 @@ info {
 }
 
 .form-edit {
-  .input, .select {
+  ion-list {
+    margin: 0;
+  }
+  .input, .select, .datetime {
     flex: 1;
     max-width: 100%;
   }
-
-  .item-select .input-wrapper {
-    display: inline-block;
+  .item-select, .item-datetime {
+    .input-wrapper {
+      display: inline-block;
+    }
+  }
+  ion-select, .datetime {
+    background: $grey-bg-color;
+    padding: 6px 8px;
+  }
+  ion-label {
+    color: $main-color;
+    font-family: $font-family-medium;
   }
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ModalController } from "ionic-angular";
+import { CreateTaskModalComponent } from "./create-task-modal/create-task-modal";
 
 @Component({
   selector: 'create-task',
@@ -6,11 +8,12 @@ import { Component } from '@angular/core';
 })
 export class CreateTaskComponent {
 
-  text: string;
+  constructor(private modalCtrl: ModalController) {
+  }
 
-  constructor() {
-    console.log('Hello CreateTaskComponent Component');
-    this.text = 'Hello World';
+  openModal() {
+    let appModal = this.modalCtrl.create(CreateTaskModalComponent);
+    appModal.present();
   }
 
 }

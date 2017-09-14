@@ -24,8 +24,10 @@
       <image-upload [icon]="'pencil'" (outputImg)="getImgSrc($event)"></image-upload>
     </div>
     <div class="profile-image">
-      <img class="picture" [src]="userAvatar" width="110" height="110" style="display: block; margin-left: auto; margin-right: auto;">
+      <img class="picture" [src]="userAvatar" width="110" height="110"
+           style="display: block; margin-left: auto; margin-right: auto;">
     </div>
+    <h1 class="profile-full-name" text-center>Lucy Campbell</h1>
   </div>
   <div class="profile-page-content">
     <div padding class="profile-tab-bar">
@@ -43,11 +45,11 @@
     </div>
     <div [ngSwitch]="segment">
       <div class="segment-wrapper" *ngSwitchCase="'info'">
-        <ion-card *ngFor="let card of cards">
+        <ion-card *ngFor="let card of cards let i = index;" [class.first]="(i == 1)">
           <ion-card-header>
             <ion-row no-padding>
               <ion-col text-left>
-                <ion-card-title color="primary">{{card.title}}</ion-card-title>
+                <h2 color="primary">{{card.title}}</h2>
               </ion-col>
               <ion-col text-right class="configs">
                 <button ion-button clear small no-margin *ngIf="!card.edit" (click)="toggleCard(card)">

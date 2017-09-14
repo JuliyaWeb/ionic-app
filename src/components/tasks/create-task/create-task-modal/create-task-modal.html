@@ -1,0 +1,26 @@
+<ion-header padding class="ion-modal-header">
+  <ion-title class="modal-title">Create Post:</ion-title>
+  <ion-icon class="icon-close" name="close" (click)="dismiss()"></ion-icon>
+</ion-header>
+<ion-content padding class="ion-modal-content">
+  <div class="row-upload-images">
+    <label>Upload Image(s)</label>
+    <ion-row>
+      <ion-col>
+        <image-upload></image-upload>
+      </ion-col>
+      <ion-col>
+        <image-upload></image-upload>
+      </ion-col>
+      <ion-col>
+        <image-upload></image-upload>
+      </ion-col>
+    </ion-row>
+  </div>
+  <ion-item no-padding>
+    <ion-label stacked>Caption & Tags</ion-label>
+    <ion-textarea></ion-textarea>
+  </ion-item>
+  <button ion-button full>Submit for Approval</button>
+</ion-content>
+

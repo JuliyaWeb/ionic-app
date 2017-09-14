@@ -38,11 +38,24 @@ page-profile {
 
 .profile-page-content {
   ion-card {
+    &.first {
+      .label {
+        width: 110px;
+      }
+    }
   }
 }
 
 .profile-image {
   img {
     border: 2px solid $white-color;
+  }
+}
+
+.edit-card {
+  .button {
+    height: auto;
+    margin-top: 0;
+    padding-top: 0;
   }
 }

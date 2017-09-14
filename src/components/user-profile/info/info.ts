@@ -82,7 +82,7 @@ export class InfoComponent {
 
   private _initBasicInfoForm(): FormGroup {
     return this.formBuilder.group({
-      'age': ['', Validators.compose([Validators.maxLength(2)])],
+      'date': [''],
       'gender': ['2'],
       'location': [''],
       'interested': ['0'],

@@ -3,16 +3,16 @@ import { AlertController, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-import { WelcomePage } from "../pages/welcome/welcome";
+// import { WelcomePage } from "../pages/welcome/welcome";
 import { Deeplinks } from "@ionic-native/deeplinks";
-// import { TabsPage } from "../pages/tabs/tabs";
+import { TabsPage } from "../pages/tabs/tabs";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = WelcomePage;
-  // rootPage: any = TabsPage;
+  // rootPage:any = WelcomePage;
+  rootPage: any = TabsPage;
 
   constructor(platform: Platform,
               statusBar: StatusBar,
@@ -29,7 +29,7 @@ export class MyApp {
       this.pushsetup();
     });
   }
-
+// <h1><a href="myapp://lineup-app.com">Click</a></h1>
   pushsetup() {
     const options: PushOptions = {
       android: {

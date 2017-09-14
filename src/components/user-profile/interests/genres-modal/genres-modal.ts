@@ -12,7 +12,7 @@ export class GenresModalComponent {
   public interest: Object;
   public selectedInterests: any;
 
-  constructor(private _viewCtrl: ViewController,
+  constructor(private viewCtrl: ViewController,
               private params: NavParams,
               private _interestsData: InterestsDataService) {
   }
@@ -26,7 +26,7 @@ export class GenresModalComponent {
   }
 
   public dismiss() {
-    this._viewCtrl.dismiss();
+    this.viewCtrl.dismiss();
   }
 
 }

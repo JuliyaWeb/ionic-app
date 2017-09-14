@@ -42,9 +42,9 @@
     </ion-list>
     <form [formGroup]="basicInfoForm" class="form-edit" *ngIf="card.edit">
       <ion-list>
-        <ion-item>
+        <ion-item class="item-datetime">
           <ion-label float-left>Age</ion-label>
-          <ion-input formControlName="age" type="number"></ion-input>
+          <ion-datetime displayFormat="MM-DD-YYYY" formControlName="date" placeholder="Choose your Birthday"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label float-left>Gender</ion-label>
@@ -66,7 +66,7 @@
         </ion-item>
         <ion-item>
           <ion-label float-left>Location</ion-label>
-          <ion-input type="text" formControlName="location" placeholder="Pick an address" (click)="showModal()">
+          <ion-input type="text" formControlName="location" placeholder="Enter an address" (click)="showModal()">
           </ion-input>
         </ion-item>
       </ion-list>

@@ -10,6 +10,7 @@ import { CookieModule } from 'ngx-cookie';
 import { IonicStorageModule } from "@ionic/storage";
 import { Push } from '@ionic-native/push';
 import { Deeplinks } from "@ionic-native/deeplinks";
+import { ChartsModule } from 'ng2-charts';
 
 import { APP_PAGES } from "../pages/index";
 import { ComponentsModule } from "../components/components.module";
@@ -29,7 +30,8 @@ import { APP_PROVIDERS, ApiHttp, Session, Config } from "../core/providers";
     }),
     CookieModule.forRoot(),
     IonicStorageModule.forRoot(),
-    ComponentsModule
+    ComponentsModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

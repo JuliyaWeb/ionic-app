@@ -64,7 +64,7 @@ export class InfoComponent {
   };
 
   public showModal() {
-    let modal = this.modalCtrl.create(AutocompleteComponent);
+    let modal = this.modalCtrl.create(AutocompleteComponent, null, {cssClass: 'autocomplete'});
     modal.onDidDismiss(data => {
       if (data) {
         this.basicInfoForm.controls['location'].patchValue(data.address);

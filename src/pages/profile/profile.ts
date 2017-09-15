@@ -16,6 +16,12 @@ export class ProfilePage {
   public editProfile: boolean = false;
   public userAvatar: string = 'https://s3.amazonaws.com/ionic-io-static/9TxJELnATnW9H3MZZfdG_Profile_avatar_placeholder_large.png';
 
+  /* Chart */
+  public doughnutChartType: string = 'pie';
+  public doughnutChartLegend: boolean = true;
+  public doughnutChartData: any;
+  public doughnutChartColors: any[];
+  public doughnutChartOptions: any;
 
   constructor(public navCtrl: NavController,
               private _profileDataService: InitProfileDataService,
@@ -25,6 +31,7 @@ export class ProfilePage {
   ionViewCanEnter() {
     this.user = this.authService.getUser();
     this._initCards();
+    this._initDoughnutChart();
   }
 
   public toggleCard(card: Card) {
@@ -44,6 +51,26 @@ export class ProfilePage {
     data.map((item) => {
       this.cards.push(new Card(item))
     })
+  }
+
+  /* Doughnut Chart */
+  private _initDoughnutChart() {
+    this.doughnutChartData = [250, 620];
+    this.doughnutChartColors = [
+      {
+        backgroundColor: [
+          'rgb(247, 107, 108)',
+          'rgb(35, 46, 97)',
+        ],
+        hoverBackgroundColor: [
+          'rgb(247, 107, 108)',
+          'rgb(35, 46, 97)',
+        ],
+        borderColor: 'rgba(255, 99, 132, 0.2)',
+        borderWidth: 1,
+        hoverBorderWidth: 3
+      }
+    ];
   }
 
 }

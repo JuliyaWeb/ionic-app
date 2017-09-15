@@ -37,6 +37,19 @@ page-profile {
 }
 
 .profile-page-content {
+  .profile-strength {
+    .card-content {
+      position: relative;
+      padding-left: 120px;
+    }
+  }
+  .strength-chart {
+    display: block;
+    width: 215px;
+    height: auto;
+    position: absolute;
+    left: -45px;
+  }
   ion-card {
     &.first {
       .label {

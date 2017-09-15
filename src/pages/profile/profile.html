@@ -45,11 +45,53 @@
     </div>
     <div [ngSwitch]="segment">
       <div class="segment-wrapper" *ngSwitchCase="'info'">
+        <!-- Profile Strength -->
+        <ion-card class="profile-strength">
+          <ion-card-content>
+            <div class="strength-chart">
+              <canvas baseChart
+                      [data]="doughnutChartData"
+                      [chartType]="doughnutChartType"
+                      [colors]="doughnutChartColors"></canvas>
+            </div>
+            <div class="strength-info">
+              <h4>Profile Strength</h4>
+              <p>You have completed 75% of your profile. The
+                higher the number the higher the chance
+                that you’ll be invited to participate in cam-
+                paigns</p>
+              <p>
+                <fa-icon name="cog" class="icon"></fa-icon>
+                Click the gear icon to improve each section
+              </p>
+            </div>
+          </ion-card-content>
+        </ion-card>
+        <!-- Transparency Policy -->
+        <ion-card class="transparency-policy">
+          <ion-card-content>
+            <h4>Transparency Policy</h4>
+            <p>Share as much (or as little) information as you’d like - we will only share
+              your information with verified businesses and marketing agencies. If you
+              don’t want to share anything remember to leave it blank. You’re in full
+              control. You can view our privacy policy and terms at any tme in the
+              menu or follow the links below</p>
+            <ion-row>
+              <ion-col padding-right>
+                <button ion-button full>Privacy Policy</button>
+              </ion-col>
+              <ion-col padding-left>
+                <button ion-button full>Terms of Use</button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+        <!-- Info Cards -->
         <ion-card *ngFor="let card of cards let i = index;" [class.first]="(i == 1)">
           <ion-card-header>
             <ion-row no-padding>
               <ion-col text-left>
-                <h2 color="primary">{{card.title}}</h2>
+                <h4 color="primary">{{card.title}}</h4>
               </ion-col>
               <ion-col text-right class="configs">
                 <button ion-button clear small no-margin *ngIf="!card.edit" (click)="toggleCard(card)">

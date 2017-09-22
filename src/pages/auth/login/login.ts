@@ -5,6 +5,7 @@ import { RegisterPage } from "../register/register";
 import { TabsPage } from "../../tabs/tabs";
 import { LoginForm, AuthServiceApp } from "../../../core/auth/index";
 import { FormHelper } from "../../../core/helpers/form-helper";
+import { ForgotPasswordPage } from "../forgot-password/forgot-password";
 
 @Component({
   selector: 'page-login',
@@ -61,6 +62,9 @@ export class LoginPage {
 
   public goToRegister() {
     this.navCtrl.setRoot(RegisterPage);
+  }
+  public goToForgotPassword() {
+    this.navCtrl.setRoot(ForgotPasswordPage);
   }
 
 }

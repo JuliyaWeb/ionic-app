@@ -1,7 +1,24 @@
-@import "../../../theme/variables";
-page-register {
+@import "variables";
+
+page-register,
+page-login,
+page-register-completion,
+page-forgot-password,
+forgot-password-reset {
   .content {
     background-color: #364f9f;
+  }
+}
+
+page-login {
+  .btn-social {
+    position: relative;
+    margin-top: 15px;
+    fa-icon {
+      color: #fff;
+      position: absolute;
+      left: 20px
+    }
   }
 }
 
@@ -42,11 +59,26 @@ page-register {
     margin-top: 20px;
     display: block;
   }
+  .text-right {
+    font-size: 11px;
+    margin-top: 8px;
+    text-align: right;
+  }
   .error {
     display: block;
     text-align: left;
     background: #fff;
     font-size: 11px;
     font-weight: bold;
+  }
+}
+
+.activation-form {
+  ion-input {
+    background: #fff;
+    border-radius: 4px;
+  }
+  .text-input {
+    text-align: center;
   }
 }

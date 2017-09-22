@@ -1,4 +1,34 @@
-<!-- Generated template for the AquisitionTaskComponent component -->
-<div>
-  AquisitionTaskComponent
+<div class="row-action-type">
+  <label class="label-title">Collaborator to purchase</label>
 </div>
+<div class="row-description">
+  <label class="label-title">Where to Buy/When to Expect Shipment</label>
+  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blan-
+    ditiis praesentium voluptatum deleniti atque corrupti quos dolores et
+    quas molestias excepturi At vero eos et accusamus et iusto odio dignis-
+    simos ducimus qui blanditiis praesentium.</p>
+</div>
+<div class="row-images">
+  <label class="label-title">Product Images</label>
+  <ion-row>
+    <ion-col>
+      <!--max-width: 191px;-->
+      <img src="../../assets/img/app/default.png"/>
+    </ion-col>
+  </ion-row>
+</div>
+<ion-row class="row-due-date">
+  <fa-icon name="clock-o"></fa-icon>
+  <ion-col>
+    <label class="label-title">Date:</label>
+    <p>00/00/2017</p>
+  </ion-col>
+</ion-row>
+<ion-row class="row-reward">
+  <ion-icon name="star"></ion-icon>
+  <ion-col>
+    <label class="label-title">Reward</label>
+    <p>Free Entry on list</p>
+  </ion-col>
+</ion-row>
+<button ion-button full (click)="openModal()">Confirm Completion</button>

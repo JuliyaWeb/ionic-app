@@ -31,6 +31,7 @@ $side-menu-color: #dddddd;
 $sub-nav-color: #353535;
 
 $shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+$border: 2px solid rgba(0, 0, 0, 0.1);
 
 
 
@@ -51,7 +52,7 @@ $danger-color: #f76b6c;
 
 $colors: (
   primary:    #232e61,
-  secondary:  #32db64,
+  white:      #fff,
   danger:     #f76b6c,
   success:    #0c7000,
   light:      #f4f4f4,

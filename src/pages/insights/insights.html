@@ -7,6 +7,48 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  Insights Page!!!
+<ion-content>
+  <div padding class="profile-tab-bar">
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="facebook">
+        Facebook
+      </ion-segment-button>
+      <ion-segment-button value="instagram">
+        Instagram
+      </ion-segment-button>
+      <ion-segment-button value="twitter">
+        Twitter
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <ion-card class="overview-section">
+    <ion-card-header>
+      <h4 float-left>Overview</h4>
+      <span class="card-date" text-right>18.09.2017</span>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-slides pager>
+        <ion-slide *ngFor="let item of overviewData;" class="slide">
+          <h2>{{item.data}}</h2>
+          <p>{{item.title}}</p>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+  <div class="chart-section">
+    <div class="audience">
+      <div class="header">
+        <h4 float-left>Audience Growth</h4>
+        <span class="card-date" text-right>18.09.2017</span>
+      </div>
+      <div class="chart">
+        <canvas baseChart
+                [data]="lineChartData"
+                [labels]="lineChartLabels"
+                [chartType]="'lineChartType'"
+                [colors]="lineChartColors"></canvas>
+      </div>
+    </div>
+
+  </div>
 </ion-content>

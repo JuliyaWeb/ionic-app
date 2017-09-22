@@ -15,6 +15,7 @@
         <span *ngIf="formErrors && formErrors.password" class="error">
           <span ion-text color="danger">{{ formErrors.password }}</span>
         </span>
+        <a class="btn btn-link text-right" (click)="goToForgotPassword()">Forgot password?</a>
       </ion-list>
       <button ion-button full color="danger" [disabled]="!form.valid">Log in</button>
       <button ion-button full icon-left class="btn-social">
@@ -25,5 +26,3 @@
     </form>
   </div>
 </ion-content>
-
-

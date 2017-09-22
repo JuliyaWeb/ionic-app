@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { InitProfileDataService } from "../shared/providers/init-profile-data";
-import { FormGroup, Validators, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder } from "@angular/forms";
 import { ModalController } from "ionic-angular";
 import { AutocompleteComponent } from "../../autocomplete/autocomplete";
 

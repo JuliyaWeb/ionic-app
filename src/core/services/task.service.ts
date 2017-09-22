@@ -26,7 +26,7 @@ const testData = [
     "due_date": "2017-08-29",
     "task_type": 4,
     "campaign": 'Campaign Title',
-    "task_type_display": "Type Task",
+    "task_type_display": "EVENT",
   }, {
     "id": 56,
     "title": "Task Title",
@@ -34,16 +34,16 @@ const testData = [
     "due_date": "2017-08-29",
     "task_type": 6,
     "campaign": 'Campaign Title',
-    "task_type_display": "Type Task",
+    "task_type_display": "CREATE",
 
   }, {
     "id": 57,
     "title": "Task Title",
     "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas mo- lestias excepturi sint occaecati cupiditate non.",
     "due_date": "2017-08-29",
-    "task_type": 8,
+    "task_type": 5,
     "campaign": 'Campaign Title',
-    "task_type_display": "Type Task",
+    "task_type_display": "AQUISITION",
 
   }, {
     "id": 58,
@@ -52,16 +52,16 @@ const testData = [
     "due_date": "2017-08-29",
     "task_type": 3,
     "campaign": 'Campaign Title',
-    "task_type_display": "Type Task",
+    "task_type_display": "POST",
 
   }, {
     "id": 59,
     "title": "Task Title",
     "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas mo- lestias excepturi sint occaecati cupiditate non.",
     "due_date": "2017-08-29",
-    "task_type": 4,
+    "task_type": 2,
     "campaign": 'Campaign Title',
-    "task_type_display": "Type Task",
+    "task_type_display": "SHARE",
 
   }, {
     "id": 60,
@@ -70,7 +70,7 @@ const testData = [
     "due_date": "2017-08-29",
     "task_type": 6,
     "campaign": 'Campaign Title',
-    "task_type_display": "Type Task",
+    "task_type_display": "CREATE",
 
   }, {
     "id": 61,
@@ -88,7 +88,7 @@ const testData = [
     "due_date": "2017-08-29",
     "task_type": 6,
     "campaign": 'Campaign Title',
-    "task_type_display": "Type Task",
+    "task_type_display": "CREATE",
 
   }, {
     "id": 63,
@@ -104,9 +104,8 @@ const testData = [
     "title": "Task Title",
     "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas mo- lestias excepturi sint occaecati cupiditate non.",
     "due_date": "2017-08-29",
-    "task_type": 6,
+    "task_type": 8,
     "campaign": 'Campaign Title',
-    "task_type_display": "Type Task",
-
+    "task_type_display": "POLLSURVEY",
   },
-]
+];

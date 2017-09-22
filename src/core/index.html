@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title></title>
+  <meta name='MobileOptimized' content='320'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<style>
+  html, body {
+    padding: 10px;
+    background-color: #364f9f;
+    font-family: -apple-system, 'Helvetica Neue', 'Roboto', sans-serif;
+    color: #fff;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  #main-content h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  #main-content .open-app {
+    display: block;
+    width: 100%;
+    background: #f76b6c;
+    color: #fff;
+    border: 0;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 25px;
+    text-decoration: none;
+  }
+
+  #main-content .sep {
+    height: 1px;
+    background: #fff;
+    position: relative;
+    margin: 20px 0;
+  }
+
+  #main-content .sep span {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #364f9f;
+    padding: 0 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  #token-area #token {
+    padding: 8px;
+    width: 100%;
+  }
+</style>
+<body>
+<div id='main-content'>
+  <h1 id='title'>To finish <span id='action-type'></span> you need</h1>
+
+  <a class='open-app' id='redBtn' href=''>Open app</a>
+  <div id='token-area'>
+    <p class='sep'><span>or</span></p>
+    <p>Enter token manually: <input id='token'></p>
+  </div>
+  <!--<p class='app-link'>-->
+  <!--<a id='app-link-android' class='app-link' target='_blank'-->
+  <!--href='https://play.google.com/store/apps/details?id=com.stiptrac.buyer'>-->
+  <!--<img src='https://stiptrac.com/assets/img/play-market-website.png' style='width:80%;max-width:230px;'>-->
+  <!--</a>-->
+  <!--<a id='app-link-ios' class='app-link' target='_blank'-->
+  <!--href='https://itunes.apple.com/us/app/take-the-keys/id1233682958?ls=1&mt=8'>-->
+  <!--<img src='https://stiptrac.com/assets/img/apple-store-website.png' style='width:80%; max-width:230px;'>-->
+  <!--</a>-->
+  <!--</p>-->
+</div>
+
+<script type='text/javascript'>
+    function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ''));
+    }
+//    function getMobileOperatingSystem() {
+//      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+//
+//      // Windows Phone must come first because its UA also contains “Android”
+//      if (/windows phone/i.test(userAgent)) {
+//        return 'Windows Phone';
+//      }
+//
+//      if (/android/i.test(userAgent)) {
+//        return 'Android';
+//      }
+//
+//      // iOS detection from: http://stackoverflow.com/a/9039885/177710
+//      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+//        return 'iOS';
+//      }
+//      return 'unknown';
+//    }
+  function ready() {
+
+//        var device = getMobileOperatingSystem();
+//        if (device == 'Android') {
+//          document.getElementById('app-link-android').style.display = 'block';
+//          document.getElementById('app-link-ios').style.display = 'none';
+//        } else if (device == 'iOS') {
+//          document.getElementById('app-link-android').style.display = 'none';
+//          document.getElementById('app-link-ios').style.display = 'block';
+//        }
+
+        var url = '';
+        var locationSplit = location.pathname.split('/');
+        if (locationSplit.length > 2 || (locationSplit.length == 2 && locationSplit[1] == 'privacy-policy')) {
+          url = location.pathname;
+        } else {
+          url = location.hash.replace('#', '');
+        }
+        console.log('url:', location);
+//        var type = getParameterByName('type');
+    //    if (type) {
+    //      var token = getParameterByName(‘token’);
+    //      var id = getParameterByName(‘id’);
+    //      var subdomain = getParameterByName(‘subdomain’);
+    //    } else {
+    //      var urlParts = url.split(‘/’);
+    //      type = urlParts[1];
+    //      token = urlParts[2];
+    //      id = urlParts[2];
+    //      subdomain = urlParts[3];
+    //    }
+    //    if (type == ‘privacy-policy’) {
+    //      document.getElementById(‘privacy-policy’).style.display = ‘block’;
+    //      document.getElementById(‘main-content’).style.display = ‘none’;
+    //      document.getElementById(‘support’).style.display = ‘none’;
+    //    } else if(type == ‘support’) {
+    //      document.getElementById(‘privacy-policy’).style.display = ‘none’;
+    //      document.getElementById(‘main-content’).style.display = ‘none’;
+    //      document.getElementById(‘support’).style.display = ‘block’;
+    //    } else if (type != null) {
+    //      document.getElementById(‘privacy-policy’).style.display = ‘none’;
+    //      document.getElementById(‘main-content’).style.display = ‘block’;
+    //      document.getElementById(‘support’).style.display = ‘none’;
+    //    }
+    //    if (type == ‘signup’) {
+    //      document.getElementById(‘action-type’).innerText = ‘Sign Up’;
+    //      document.getElementById(‘token’).value = token;
+    //      document.getElementById(‘token-area’).style.display = ‘block’;
+    //    } else if (type == ‘reset’) {
+    //      document.getElementById(‘action-type’).innerText = ‘Reset Password’;
+    //      document.getElementById(‘token’).value = token;
+    //      document.getElementById(‘token-area’).style.display = ‘block’;
+    //    } else if (type == ‘deal’) {
+    //      document.getElementById(‘title’).innerText = ‘To open Deal’;
+    //      document.getElementById(‘token-area’).style.display = ‘none’;
+    //    }
+    //    document.getElementById(‘redBtn’).onclick = function (e) {
+    //      e.preventDefault();
+    //      var device = getMobileOperatingSystem();
+    //      if (device == ‘Android’) {
+    //        location.href = ‘http://take-the-keys.com/’ + type + ‘/’ + token;
+    //        if (type == ‘deal’) {
+    //          location.href = ‘http://take-the-keys.com/deal/’ + id + ‘/’ + subdomain;
+    //        }
+    //      } else if (device == ‘iOS’) {
+    //        location.href = ‘stipbuyer://’ + type + ‘/’ + token;
+    //        if (type == ‘deal’) {
+    //          location.href = ‘stipbuyer://deal/’ + id + ‘/’ + subdomain;
+    //        }
+    //      }
+    //      // document.write(getMobileOperatingSystem());
+    //    };
+    //  };
+    document.getElementById('redBtn').onclick = function (e) {
+      e.preventDefault();
+      console.log('click');
+      location.href = 'myapp://app.lineup.com/register-completion';
+    };
+  }
+  document.addEventListener('DOMContentLoaded', ready);
+
+
+</script>
+
+</body>
+
+</html>

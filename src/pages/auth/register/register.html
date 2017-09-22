@@ -14,10 +14,17 @@
       <button ion-button block color="danger" [disabled]="!form.valid">Sign Up</button>
       <a class="btn btn-link" (click)="goToLogin()">Already have an Account?</a>
     </form>
+    <form [formGroup]="formActivation" class="activation-form">
+      <ion-row>
+        <ion-col col-4 *ngFor="let item of fieldsCode;">
+          <ion-input type="number" formControlName={{item}}></ion-input>
+        </ion-col>
+      </ion-row>
+    </form>
 
-    <div text-center *ngIf="!showForm">
+    <div class="info-message" *ngIf="!showForm">
       <h4>Your registration was successful!</h4>
-      <p>You should now receive the email with further instructions.</p>
+      <p>You should now receive the email with activation code and further instructions.</p>
     </div>
   </div>
 </ion-content>

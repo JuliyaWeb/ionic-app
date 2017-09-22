@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'poll-survey-task',
@@ -15,9 +15,12 @@ export class PollSurveyTaskComponent {
   public dataList: Array<any>;
   public label: string = 'Required. Please select one';
 
-  constructor(private fb: FormBuilder) {
+  constructor() {
     console.log('Hello PollSurveyTaskComponent Component');
   }
+  // constructor(private fb: FormBuilder) {
+  //   console.log('Hello PollSurveyTaskComponent Component');
+  // }
 
   ngOnInit() {
     this._initTstData();

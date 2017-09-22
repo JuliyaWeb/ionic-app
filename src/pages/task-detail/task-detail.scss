@@ -14,3 +14,11 @@ page-task-detail {
     }
   }
 }
+
+.row-caption {
+  margin-bottom: 25px;
+  textarea {
+    min-height: 80px;
+    border: 1px solid;
+  }
+}

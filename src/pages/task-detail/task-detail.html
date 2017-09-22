@@ -7,15 +7,22 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div class="task-component" margin [ngSwitch]="task.task_type">
-    <event-task *ngSwitchCase="taskType.EVENT"></event-task>
-    <post-task *ngSwitchCase="taskType.POST"></post-task>
-    <share-task *ngSwitchCase="taskType.SHARE"></share-task>
-    <review-task *ngSwitchCase="taskType.REVIEW"></review-task>
-    <aquisition-task *ngSwitchCase="taskType.AQUISITION"></aquisition-task>
-    <create-task *ngSwitchCase="taskType.CREATE"></create-task>
-    <poll-survey-task *ngSwitchCase="taskType.POLLSURVEY"></poll-survey-task>
-    <!--<trial-test-task *ngSwitchCase="taskTypes.TRIALTEST" [task]="item" [isSubmit]="isSubmit"></trial-test-task>-->
+<ion-content padding>
+  <div class="task-detail">
+    <h5>{{task.title}}</h5>
+    <div class="task-description">
+      <label class="label-title">Breif/Description</label>
+      <p>{{task.description}}</p>
+    </div>
+    <div class="task-component" [ngSwitch]="task.task_type">
+      <event-task *ngSwitchCase="taskType.EVENT"></event-task>
+      <post-task *ngSwitchCase="taskType.POST"></post-task>
+      <share-task *ngSwitchCase="taskType.SHARE"></share-task>
+      <review-task *ngSwitchCase="taskType.REVIEW"></review-task>
+      <aquisition-task *ngSwitchCase="taskType.AQUISITION"></aquisition-task>
+      <create-task *ngSwitchCase="taskType.CREATE"></create-task>
+      <poll-survey-task *ngSwitchCase="taskType.POLLSURVEY"></poll-survey-task>
+      <!--<trial-test-task *ngSwitchCase="taskTypes.TRIALTEST" [task]="item" [isSubmit]="isSubmit"></trial-test-task>-->
+    </div>
   </div>
 </ion-content>

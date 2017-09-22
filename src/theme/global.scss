@@ -121,6 +121,12 @@ ion-card.card {
   }
 }
 
+textarea.text-input {
+  border: 1px solid $main-color;
+  padding: 6px 8px;
+  height: 120px;
+}
+
 /**** General styles ****/
 hr.line-shadow {
   -webkit-box-shadow: 0 1px 5px 2px rgba(153, 153, 153, 0.3);
@@ -133,8 +139,12 @@ hr.line-shadow {
 }
 
 .label-title {
-  color: $text-grey-color;
   font-weight: bold;
+}
+
+.sublabel,
+.label-title {
+  color: $text-grey-color;
 }
 
 img.picture {
@@ -145,6 +155,7 @@ img.picture {
   text-transform: capitalize;
   border-radius: 0;
   font-family: $font-family-medium;
+  font-size: 14px;
 }
 
 .loading-wrapper {
@@ -154,5 +165,21 @@ img.picture {
   .spinner-bubbles circle {
     fill: $main-color;
   }
+}
+
+.row-upload-images {
+  .image-wrapper {
+    border: 1px solid $main-color;
+    height: 100px;
+  }
+}
+
+.color-white {
+  color: #fff !important;
+}
+
+.list-ios > .item-block:first-child,
+.list-ios > .item-block:last-child {
+  border: none !important;
 }
 

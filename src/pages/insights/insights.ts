@@ -6,12 +6,25 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'insights.html',
 })
 export class InsightsPage {
+  public segment: string = 'facebook';
+  public overviewData: Array<any>;
+
+  /* LineChartType */
+  public lineChartData: any;
+  public lineChartLabels:Array<string> = ['Follow', 'Unfollow'];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+    this.overviewData = [
+      {
+        title: 'Reach',
+        data: '1,183,670',
+      }, {
+        title: 'Engagement',
+        data: '822,771',
+      }
+    ]
   }
-
 }

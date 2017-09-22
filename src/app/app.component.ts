@@ -1,35 +1,43 @@
-import { Component } from '@angular/core';
-import { AlertController, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
+import { Component, ViewChild } from '@angular/core';
+import { AlertController, Platform, Nav } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-// import { WelcomePage } from "../pages/welcome/welcome";
+import { WelcomePage } from "../pages/welcome/welcome";
 import { Deeplinks } from "@ionic-native/deeplinks";
+import { RegisterCompletionPage } from "../pages/auth/register-completion/register-completion";
+import { ProfilePage } from "../pages/profile/profile";
 import { TabsPage } from "../pages/tabs/tabs";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  // rootPage:any = WelcomePage;
-  rootPage: any = TabsPage;
+  rootPage: any = WelcomePage;
+  // rootPage: any = TabsPage;
+
+  @ViewChild(Nav) navChild: Nav;
 
   constructor(platform: Platform,
-              statusBar: StatusBar,
               splashScreen: SplashScreen,
               private deeplinks: Deeplinks,
               private push: Push,
               private alertCtrl: AlertController) {
     platform.ready().then(() => {
-      // public alertCtrl: AlertController
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
       splashScreen.hide();
       this.pushsetup();
+      this.deeplinks.routeWithNavController(this.navChild, {
+        '/register-completion': TabsPage,
+      }).subscribe((match) => {
+        // if (match.$link['path'] == '/register-completion') {
+          // console.log('match.$link', match.$link);
+          // this.navChild.setRoot(RegisterCompletionPage);
+        // }
+      }, (nomatch) => {
+        console.error('Got a deeplink that didn\'t match', nomatch);
+      });
     });
+
   }
-// <h1><a href="myapp://lineup-app.com">Click</a></h1>
   pushsetup() {
     const options: PushOptions = {
       android: {

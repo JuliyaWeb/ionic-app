@@ -1,42 +1,45 @@
-<div class="task-detail">
-  <h1>Question</h1>
+<hr/>
+<div class="poll-card" *ngFor="let item of dataList; let i=index;">
+  <h5>Question</h5>
   <div class="task-description">
     <p class="question">At vero eos et accusamus et iusto odio dignissimos ducimus
       qui blankditiis praesentium voluptatum deleniti atque corrupti?</p>
-    <label class="label-title">blankditiis praesentium voluptatum deleniti atque corrupti</label>
+    <label class="sublabel">blankditiis praesentium voluptatum deleniti atque corrupti</label>
   </div>
-  <hr/>
   <div class="answer-section">
-    <h4>Your Answer*</h4>
-    <label>{{label}}</label>
+    <div class="wrapper">
+      <h5>Your Answer*</h5>
+      <label class="sublabel">{{label}}</label>
+    </div>
     <!--************************************************-->
-    <ion-textarea ([ngModel])="textBox"></ion-textarea>
+    <ion-textarea *ngIf="i == 0" ([ngModel])="textBox"></ion-textarea>
     <!--************************************************-->
-    <ion-list class="radio-group" radio-group [(ngModel)]="singleChoice">
+    <ion-list *ngIf="i == 1" class="radio-group" radio-group [(ngModel)]="singleChoice">
       <ion-item *ngFor="let item of dataList">
         <ion-label>{{item.text}}</ion-label>
         <ion-radio value="{{item.id}}"></ion-radio>
       </ion-item>
     </ion-list>
     <!--************************************************-->
-    <ion-list>
+    <ion-list *ngIf="i == 2">
       <ion-item *ngFor="let item of dataList">
         <ion-label>{{item.text}}</ion-label>
         <ion-checkbox (ionChange)="onChangeCheckBox(item.id, $event.checked)"></ion-checkbox>
       </ion-item>
     </ion-list>
     <!--************************************************-->
-    <ion-item no-padding class="default-select">
+    <ion-item *ngIf="i == 3" no-padding class="default-select">
       <ion-select [(ngModel)]="dropDownList" (ngModelChange)="onChangeDropDown($event)">
         <ion-option *ngFor="let option of dataList">{{option.text}}</ion-option>
       </ion-select>
     </ion-item>
     <!--************************************************-->
-    <ion-list radio-group [(ngModel)]="singleChoice" class="one-to-ten">
+    <ion-list *ngIf="i == 4" radio-group [(ngModel)]="singleChoice" class="one-to-ten">
       <ion-item *ngFor="let item of dataList">
-        <ion-label>{{item.id}}</ion-label>
+        <ion-label>{{item.id+1}}</ion-label>
         <ion-radio value="{{item.id}}"></ion-radio>
       </ion-item>
     </ion-list>
   </div>
 </div>
+<button ion-button full>Complete</button>

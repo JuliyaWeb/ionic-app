@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { RegisterSecondaryFrom, AuthServiceApp } from "../../../core/auth/index";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { FormHelper } from "../../../core/helpers/form-helper";
+import { TabsPage } from "../../tabs/tabs";
 
 @Component({
   selector: 'page-register-completion',
@@ -10,7 +11,7 @@ import { FormHelper } from "../../../core/helpers/form-helper";
   providers: [FormHelper]
 })
 export class RegisterCompletionPage {
-  public isReady: boolean = false;
+  public isReady: boolean = true;
   public form: FormGroup;
   public formErrors: Object;
 
@@ -20,7 +21,7 @@ export class RegisterCompletionPage {
               private fh: FormHelper,
               private authService: AuthServiceApp) {
 
-    this._confirmEmail(navParams.get('code') || null);
+    // this._confirmEmail(navParams.get('code') || null);
   }
 
   ionViewCanEnter() {
@@ -34,7 +35,7 @@ export class RegisterCompletionPage {
       'username': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(8)])],
       'confirm_password': ['', Validators.compose([Validators.required])],
-    },{validator: this.fh.matchingPasswordsValidator('password', 'confirm_password')});
+    }, {validator: this.fh.matchingPasswordsValidator('password', 'confirm_password')});
 
     this.form.valueChanges
       .subscribe(data => {
@@ -55,27 +56,26 @@ export class RegisterCompletionPage {
       .subscribe(
         (data) => {
           console.info('authService.registrationCompletion', data);
-          // this.router.navigate(['/pages/welcome']);
+          this.navCtrl.setRoot(TabsPage);
         },
         (error) => {
           console.error('authService.registrationCompletion', error);
         }
       );
-
   }
 
-  private _confirmEmail(code: string) {
-    this.authService.confirmEmail(code)
-      .subscribe(
-        (data) => {
-          console.info('authService.confirmEmail', data);
-          this.isReady = true;
-        },
-        (error) => {
-          console.error(error);
-          // this.router.navigate(['/reset/email']);
-        }
-      )
-  }
+  // private _confirmEmail(code: string) {
+  //   this.authService.confirmEmail(code)
+  //     .subscribe(
+  //       (data) => {
+  //         console.info('authService.confirmEmail', data);
+  //         this.isReady = true;
+  //       },
+  //       (error) => {
+  //         console.error(error);
+  //         // this.router.navigate(['/reset/email']);
+  //       }
+  //     )
+  // }
 
 }

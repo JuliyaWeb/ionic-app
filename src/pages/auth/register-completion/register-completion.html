@@ -4,22 +4,42 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit(form,form.value)" *ngIf="isReady" class="auth-form">
       <ion-list>
         <ion-item>
-          <ion-input formControlName="username" type="text" placeholder="Name"
+          <ion-input formControlName="first_name" type="text" placeholder="First Name"
+                     [class.invalid]="!form.controls.first_name.valid"></ion-input>
+        </ion-item>
+        <span *ngIf="formErrors && formErrors.first_name" class="error">
+          <span ion-text color="danger">{{ formErrors.first_name }}</span>
+        </span>
+        <ion-item>
+          <ion-input formControlName="last_name" type="text" placeholder="Last Name"
+                     [class.invalid]="!form.controls.last_name.valid"></ion-input>
+        </ion-item>
+        <span *ngIf="formErrors && formErrors.last_name" class="error">
+          <span ion-text color="danger">{{ formErrors.last_name }}</span>
+        </span>
+        <ion-item>
+          <ion-input formControlName="username" type="text" placeholder="UserName"
                      [class.invalid]="!form.controls.username.valid"></ion-input>
         </ion-item>
-        <span *ngIf="formErrors && formErrors.username">
-        <span ion-text color="danger">{{ formErrors.username }}</span>
+        <span *ngIf="formErrors && formErrors.username" class="error">
+          <span ion-text color="danger">{{ formErrors.username }}</span>
         </span>
         <ion-item>
           <ion-input formControlName="password" type="password" placeholder="Password"
                      [class.invalid]="!form.controls.password.valid"></ion-input>
         </ion-item>
-        <span *ngIf="formErrors && formErrors.password">
-        <span ion-text color="danger">{{ formErrors.password }}</span>
+        <span *ngIf="formErrors && formErrors.password" class="error">
+          <span ion-text color="danger">{{ formErrors.password }}</span>
+        </span>
+        <ion-item>
+          <ion-input formControlName="confirm_password" type="password" placeholder="Confirm Password"
+                     [class.invalid]="!form.controls.confirm_password.valid"></ion-input>
+        </ion-item>
+        <span *ngIf="formErrors && formErrors.confirm_password" class="error">
+          <span ion-text color="danger">{{ formErrors.confirm_password }}</span>
         </span>
       </ion-list>
-      <button ion-button block color="danger" [disabled]="!form.valid">Sign Up</button>
-      <a class="btn btn-link">DONE !</a>
+      <button ion-button block color="danger" [disabled]="!form.valid">DONE</button>
     </form>
   </div>
 </ion-content>

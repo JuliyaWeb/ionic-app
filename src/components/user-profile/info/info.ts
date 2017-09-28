@@ -1,22 +1,27 @@
 import { Component, Input } from '@angular/core';
-import { InitProfileDataService } from "../shared/providers/init-profile-data";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ModalController } from "ionic-angular";
 import { AutocompleteComponent } from "../../autocomplete/autocomplete";
+import { FormHelper } from "../../../core/helpers/form-helper";
+import { InitProfileDataService } from "../shared/index";
+import { User } from "../../../core/models/user.model";
 
 @Component({
-  selector: 'info',
+  selector: 'info-card',
   templateUrl: './info.html',
-  providers: [InitProfileDataService]
+  providers: [InitProfileDataService, FormHelper]
 })
 export class InfoComponent {
-  @Input() card;
+  @Input() userData: User;
+  public cards: Array<Object> = [];
+  public registerCompletion: boolean = false;
 
   /* forms */
   public aboutForm: FormGroup;
   public basicInfoForm: FormGroup;
   public workEducationForm: FormGroup;
-  public homeLifeForm: FormGroup;
+  public passwordForm: FormGroup;
+  public formErrors: Object;
 
   /* select data */
   public selectGenderData: Array<any>;
@@ -29,39 +34,47 @@ export class InfoComponent {
 
   constructor(private formBuilder: FormBuilder,
               private modalCtrl: ModalController,
+              private fh: FormHelper,
               private _profileDataService: InitProfileDataService) {
   }
 
   ngOnInit(): void {
-    this._switchCard(this.card.type);
+    // this.registerCompletion = (localStorage.getItem('register_completion') == 'true');
+    this._initCards();
+    // about you form
+    this._initAboutForm();
+    // basic info form
+    this._initBasicInfoForm();
+    this._initSelectGender();
+    this._initSelectAge();
+    this._initSelectRelationship();
+    this._initSelectInterestedIn();
+    // work education form
+    this._initWorkEducationForm();
+    this._initSelectEducation();
+    this._initSelectOccupation();
+    this._initSelectIncome();
+    // register completion form
+    if (this.registerCompletion) {
+      this._initPasswordForm();
+    }
+    this._setDataUserInfo(this.userData);
   }
 
-  private _switchCard(type) {
-    switch (type) {
-      case 'about_you':
-        this.aboutForm = this._initAboutForm();
-        break;
-      case 'basic_info':
-        this.basicInfoForm = this._initBasicInfoForm();
-        this._initSelectGender();
-        this._initSelectAge();
-        this._initSelectRelationship();
-        this._initSelectInterestedIn();
-        break;
-      case 'work_education':
-        this.workEducationForm = this._initWorkEducationForm();
-        this._initSelectEducation();
-        this._initSelectOccupation();
-        this._initSelectIncome();
-        break;
-      case 'home_life':
-        break;
+  public toggleCard(card) {
+    card.edit = !card.edit;
+  }
+
+  private _initCards() {
+    let data = this._profileDataService.getprofileCardsData();
+    data.map((item) => {
+      item['edit'] = this.registerCompletion;
+      this.cards.push(item)
+    });
+    if (!this.registerCompletion) {
+      this.cards.pop()
     }
   }
-
-  public onSubmit(data) {
-
-  };
 
   public showModal() {
     let modal = this.modalCtrl.create(AutocompleteComponent, null, {cssClass: 'autocomplete'});
@@ -74,14 +87,16 @@ export class InfoComponent {
     modal.present();
   }
 
-  private _initAboutForm(): FormGroup {
-    return this.formBuilder.group({
+  private _initAboutForm() {
+    this.aboutForm = this.formBuilder.group({
+      'first_name': ['', Validators.compose([Validators.required, this.fh.nameValidator, Validators.minLength(3)])],
+      'last_name': ['', Validators.compose([Validators.required, this.fh.nameValidator, Validators.minLength(3)])],
       'about': ['']
     });
   }
 
-  private _initBasicInfoForm(): FormGroup {
-    return this.formBuilder.group({
+  private _initBasicInfoForm() {
+    this.basicInfoForm = this.formBuilder.group({
       'date': [''],
       'gender': ['2'],
       'location': [''],
@@ -90,12 +105,56 @@ export class InfoComponent {
     });
   }
 
-  private _initWorkEducationForm(): FormGroup {
-    return this.formBuilder.group({
+  private _initWorkEducationForm() {
+    this.workEducationForm = this.formBuilder.group({
       'occupation': ['0'],
       'education': ['0'],
       'income': ['0']
     });
+  }
+
+  private _initPasswordForm() {
+    this.passwordForm = this.formBuilder.group({
+      'username': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+      'confirm_password': ['', Validators.compose([Validators.required])],
+    }, {validator: this.fh.matchingPasswordsValidator('password', 'confirm_password')});
+  }
+
+  private _setDataUserInfo(userInfo) {
+    console.log(userInfo)
+    userInfo.first_name && (this.aboutForm.patchValue({first_name: userInfo.first_name}));
+    userInfo.last_name && (this.aboutForm.patchValue({last_name: userInfo.last_name}));
+    this.workEducationForm.patchValue(userInfo.info);
+    this.basicInfoForm.patchValue(userInfo.info);
+  }
+
+  private _formGrops() {
+    let formGrops = Object.assign(
+      this.aboutForm.controls,
+      this.basicInfoForm.controls,
+      this.workEducationForm.controls);
+    if (this.registerCompletion) {
+      formGrops = Object.assign(formGrops, this.passwordForm.controls);
+    }
+    return formGrops;
+  }
+
+  // get data from form for request
+  public serializeDataForRequest() {
+    let data: Object = {info: {}};
+    let checkFields = ['first_name', 'last_name', 'username', 'password', 'confirm_password'];
+    const formControls = this._formGrops();
+
+    for (let field in formControls) {
+      if (checkFields.indexOf(field) > -1) {
+        data[field] = formControls[field].value;
+      } else {
+        data['info'][field] = formControls[field].value;
+      }
+    }
+    console.log(data);
+    return data;
   }
 
   private _initSelectGender() {

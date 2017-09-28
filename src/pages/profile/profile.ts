@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AuthServiceApp } from "../../core/auth/auth.service";
 import { User } from "../../core/models/user.model";
 import { InitProfileDataService, Card } from "../../components/user-profile/shared/index";
+import { InfoComponent } from "../../components/user-profile/info/info";
 
 @Component({
   selector: 'page-profile',
@@ -10,10 +11,14 @@ import { InitProfileDataService, Card } from "../../components/user-profile/shar
   providers: [InitProfileDataService]
 })
 export class ProfilePage {
+
+  @ViewChild(InfoComponent) userInfo: InfoComponent;
+
   public cards: Array<Card> = [];
   public segment = 'info';
   public user: User;
   public editProfile: boolean = false;
+  public registerCompletion: boolean = false;
   public userAvatar: string = 'https://s3.amazonaws.com/ionic-io-static/9TxJELnATnW9H3MZZfdG_Profile_avatar_placeholder_large.png';
 
   /* Chart */
@@ -21,7 +26,7 @@ export class ProfilePage {
   public doughnutChartLegend: boolean = true;
   public doughnutChartData: any;
   public doughnutChartColors: any[];
-  public doughnutChartOptions: any;
+  // public doughnutChartOptions: any;
 
   constructor(public navCtrl: NavController,
               private _profileDataService: InitProfileDataService,
@@ -29,13 +34,29 @@ export class ProfilePage {
   }
 
   ionViewCanEnter() {
+    // this.registerCompletion = (localStorage.getItem('register_completion') == 'true');
+    this.editProfile = this.registerCompletion;
     this.user = this.authService.getUser();
-    this._initCards();
+    this.user = new User({
+      id: 1,
+      first_name: 'Lucia',
+      last_name: 'Campbell',
+      username: "userCampbell",
+      email: 'test.email@com',
+      reated: '',
+      reated_by: '',
+      modified: '',
+      modified_by: '',
+      info: {
+        gender: 2,
+        income: 3,
+        education: 2,
+        relationship_status: 2,
+        occupation: 10,
+        image: "https://s3.amazonaws.com/ionic-io-static/9TxJELnATnW9H3MZZfdG_Profile_avatar_placeholder_large.png"
+      }
+    });
     this._initDoughnutChart();
-  }
-
-  public toggleCard(card: Card) {
-    card.edit = !card.edit;
   }
 
   public toggleEditProfile() {
@@ -46,11 +67,31 @@ export class ProfilePage {
     this.userAvatar = data;
   }
 
-  private _initCards() {
-    let data = this._profileDataService.getprofileCardsData();
-    data.map((item) => {
-      this.cards.push(new Card(item))
-    })
+  public saveData() {
+    const obj = this.userInfo.serializeDataForRequest();
+    // return !!this.saveInfo;
+    // let data: Object;
+    // if (this.registerCompletion) {
+    //   this.authService.registrationCompletion(data)
+    //     .subscribe(
+    //       (data) => {
+    //         console.info('authService.registrationCompletion', data);
+    //       },
+    //       (error) => {
+    //         console.error('authService.registrationCompletion', error);
+    //       }
+    //     );
+    // } else {
+    //   this.authService.saveUserData(data)
+    //     .subscribe(
+    //       (data) => {
+    //         console.info('authService.editUser', data);
+    //       },
+    //       (error) => {
+    //         console.error('authService.editUser', error);
+    //       }
+    //     );
+    // }
   }
 
   /* Doughnut Chart */

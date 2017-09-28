@@ -1,118 +1,179 @@
-<div [ngSwitch]="card.type">
-  <!-- About You Card -->
-  <div class="card-inner" *ngSwitchCase="'about_you'">
-    <div class="profile-info" *ngIf="!card.edit">
-      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui
-        blanditiis praesentium voluptatum deleniti atque corrupti quos do-
-        lores et quas molestias excepturi sint occaecati cupiditate non
-        provident, similique sunt in culpa qui officia deserunt mollitia animi,
-        id est laborum et dolorum fuga.</p>
-    </div>
-    <form [formGroup]="aboutForm" class="form-edit" *ngIf="card.edit">
-      <ion-list>
+<ion-card *ngFor="let card of cards let i = index;" [class.first]="(i == 1)">
+  <ion-card-header>
+    <ion-row no-padding>
+      <ion-col text-left>
+        <h4 color="primary">{{card.title}}</h4>
+      </ion-col>
+      <ion-col text-right class="configs" *ngIf="!registerCompletion">
+        <button ion-button clear small no-margin *ngIf="!card.edit" (click)="toggleCard(card)">
+          <fa-icon name="cog" class="icon"></fa-icon>
+        </button>
+        <div *ngIf="card.edit" class="edit-card">
+          <button ion-button clear small>Save</button>
+          <button ion-button clear small (click)="toggleCard(card)">
+            <ion-icon name='ios-close-circle' class="icon"></ion-icon>
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-card-header>
+  <ion-card-content>
+    <!-- About You Card -->
+    <div class="card-inner" *ngIf="card.type == 'about_you'">
+      <div class="profile-info" *ngIf="!card.edit">
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui
+          blanditiis praesentium voluptatum deleniti atque corrupti quos do-
+          lores et quas molestias excepturi sint occaecati cupiditate non
+          provident, similique sunt in culpa qui officia deserunt mollitia animi,
+          id est laborum et dolorum fuga.</p>
+      </div>
+      <form [formGroup]="aboutForm" class="form-edit" *ngIf="card.edit">
+        <ion-item>
+          <ion-label float-left>First Name</ion-label>
+          <ion-input formControlName="first_name" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label float-left>Last Name</ion-label>
+          <ion-input formControlName="last_name" type="text"></ion-input>
+        </ion-item>
         <ion-item>
           <ion-textarea formControlName="about" placeholder="Tell about yourself"></ion-textarea>
         </ion-item>
-      </ion-list>
-    </form>
-  </div>
-  <!-- Basic Info Card -->
-  <div class="card-inner" *ngSwitchCase="'basic_info'">
-    <ion-list class="profile-info" *ngIf="!card.edit">
-      <ion-item>
-        <label class="label" float-left>Age</label>
-        <p>18</p>
-      </ion-item>
-      <ion-item>
-        <label class="label" float-left>Gender</label>
-        <p>Female</p>
-      </ion-item>
-      <ion-item>
-        <label class="label" float-left>Marital Status</label>
-        <p>Single</p>
-      </ion-item>
-      <ion-item>
-        <label class="label" float-left>Interested in</label>
-        <p>Men</p>
-      </ion-item>
-      <ion-item>
-        <label class="label" float-left>Location</label>
-        <p>Sydney NSW, Australia</p>
-      </ion-item>
-    </ion-list>
-    <form [formGroup]="basicInfoForm" class="form-edit" *ngIf="card.edit">
-      <ion-list>
-        <ion-item class="item-datetime">
-          <ion-label float-left>Age</ion-label>
-          <ion-datetime displayFormat="MM-DD-YYYY" formControlName="date" placeholder="Choose your Birthday"></ion-datetime>
+      </form>
+    </div>
+    <!-- Basic Info Card -->
+    <div class="card-inner" *ngIf="card.type == 'basic_info'">
+      <ion-list class="profile-info" *ngIf="!card.edit">
+        <ion-item>
+          <label class="label" float-left>Age</label>
+          <p>18</p>
         </ion-item>
         <ion-item>
-          <ion-label float-left>Gender</ion-label>
-          <ion-select formControlName="gender">
-            <ion-option *ngFor="let item of selectGenderData" value="{{item.id}}">{{item.text}}</ion-option>
-          </ion-select>
+          <label class="label" float-left>Gender</label>
+          <p>{{userData?.info?.gender}}</p>
         </ion-item>
         <ion-item>
-          <ion-label float-left>Marital Status</ion-label>
-          <ion-select formControlName="relationship_status">
-            <ion-option *ngFor="let item of selectRelationshipData" value="{{item.id}}">{{item.text}}</ion-option>
-          </ion-select>
+          <label class="label" float-left>Marital Status</label>
+          <p>Single</p>
         </ion-item>
         <ion-item>
-          <ion-label float-left>Interested in</ion-label>
-          <ion-select formControlName="relationship_status">
-            <ion-option *ngFor="let item of selectinterestedInData" value="{{item.id}}">{{item.text}}</ion-option>
-          </ion-select>
+          <label class="label" float-left>Interested in</label>
+          <p>Men</p>
         </ion-item>
         <ion-item>
-          <ion-label float-left>Location</ion-label>
-          <ion-input type="text" formControlName="location" placeholder="Enter an address" (click)="showModal()">
-          </ion-input>
+          <label class="label" float-left>Location</label>
+          <p>Sydney NSW, Australia</p>
         </ion-item>
       </ion-list>
-    </form>
-  </div>
-  <!-- Work & Education Card -->
-  <div class="card-inner" *ngSwitchCase="'work_education'">
-    <ion-list class="profile-info" *ngIf="!card.edit">
-      <ion-item>
-        <label class="label" float-left>Occupation Industry</label>
-        <p>Accounting</p>
-      </ion-item>
-      <ion-item>
-        <label class="label" float-left>Highest Education Level</label>
-        <p>University</p>
-      </ion-item>
-      <ion-item>
-        <label class="label" float-left>Income</label>
-        <p>40,000 - 50,000</p>
-      </ion-item>
-    </ion-list>
-    <form [formGroup]="workEducationForm" class="form-edit" *ngIf="card.edit">
-      <ion-list>
+      <form [formGroup]="basicInfoForm" class="form-edit" *ngIf="card.edit">
+        <ion-list>
+          <ion-item class="item-datetime">
+            <ion-label float-left>Age</ion-label>
+            <ion-datetime displayFormat="MM-DD-YYYY" formControlName="date"
+                          placeholder="Choose your Birthday"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label float-left>Gender</ion-label>
+            <ion-select formControlName="gender">
+              <ion-option *ngFor="let item of selectGenderData" value="{{item.id}}">{{item.text}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label float-left>Marital Status</ion-label>
+            <ion-select formControlName="relationship_status">
+              <ion-option *ngFor="let item of selectRelationshipData" value="{{item.id}}">{{item.text}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label float-left>Interested in</ion-label>
+            <ion-select formControlName="relationship_status">
+              <ion-option *ngFor="let item of selectinterestedInData" value="{{item.id}}">{{item.text}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label float-left>Location</ion-label>
+            <ion-input type="text" formControlName="location" placeholder="Enter an address" (click)="showModal()">
+            </ion-input>
+          </ion-item>
+        </ion-list>
+      </form>
+    </div>
+    <!-- Work & Education Card -->
+    <div class="card-inner" *ngIf="card.type == 'work_education'">
+      <ion-list class="profile-info" *ngIf="!card.edit">
         <ion-item>
-          <ion-label float-left>Occupation Industry</ion-label>
-          <ion-select formControlName="occupation">
-            <ion-option *ngFor="let item of selectOccupationData" value="{{item.id}}">{{item.text}}</ion-option>
-          </ion-select>
+          <label class="label" float-left>Occupation Industry</label>
+          <p>Accounting</p>
         </ion-item>
         <ion-item>
-          <ion-label float-left>Highest Education Level</ion-label>
-          <ion-select formControlName="education">
-            <ion-option *ngFor="let item of selectEducationData" value="{{item.id}}">{{item.text}}</ion-option>
-          </ion-select>
+          <label class="label" float-left>Highest Education Level</label>
+          <p>University</p>
         </ion-item>
         <ion-item>
-          <ion-label float-left>Income</ion-label>
-          <ion-select formControlName="income">
-            <ion-option *ngFor="let item of selectIncomeData" value="{{item.id}}">{{item.text}}</ion-option>
-          </ion-select>
+          <label class="label" float-left>Income</label>
+          <p>40,000 - 50,000</p>
         </ion-item>
       </ion-list>
-    </form>
-  </div>
-  <!-- Work & Education Card -->
-  <div class="card-inner" *ngSwitchCase="'home_life'">
-    Coming Soon
-  </div>
-</div>
+      <form [formGroup]="workEducationForm" class="form-edit" *ngIf="card.edit">
+        <ion-list>
+          <ion-item>
+            <ion-label float-left>Occupation Industry</ion-label>
+            <ion-select formControlName="occupation">
+              <ion-option *ngFor="let item of selectOccupationData" value="{{item.id}}">{{item.text}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label float-left>Highest Education Level</ion-label>
+            <ion-select formControlName="education">
+              <ion-option *ngFor="let item of selectEducationData" value="{{item.id}}">{{item.text}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label float-left>Income</ion-label>
+            <ion-select formControlName="income">
+              <ion-option *ngFor="let item of selectIncomeData" value="{{item.id}}">{{item.text}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </form>
+    </div>
+    <!-- Work & Education Card -->
+    <div class="card-inner" *ngIf="card.type == 'home_life'">
+      Coming Soon
+    </div>
+    <!--Register Completion-->
+    <div class="register_completion" *ngIf="card.type == 'register_completion'">
+      <div class="card-inner">
+        <form [formGroup]="passwordForm" class="form-edit">
+          <ion-list>
+            <ion-item>
+              <ion-label float-left>UserName</ion-label>
+              <ion-input formControlName="username" type="text"
+                         [class.invalid]="!passwordForm.controls.username.valid"></ion-input>
+            </ion-item>
+            <!--<span *ngIf="formErrors && formErrors.username" class="error">-->
+            <!--<span ion-text color="danger">{{ formErrors.username }}</span>-->
+            <!--</span>-->
+            <ion-item>
+              <ion-label float-left>Password</ion-label>
+              <ion-input formControlName="password" type="password"
+                         [class.invalid]="!passwordForm.controls.password.valid"></ion-input>
+            </ion-item>
+            <!--<span *ngIf="formErrors && formErrors.password" class="error">-->
+            <!--<span ion-text color="danger">{{ formErrors.password }}</span>-->
+            <!--</span>-->
+            <ion-item>
+              <ion-label float-left>Confirm Password</ion-label>
+              <ion-input formControlName="confirm_password" type="password"
+                         [class.invalid]="!passwordForm.controls.confirm_password.valid"></ion-input>
+            </ion-item>
+            <!--<span *ngIf="formErrors && formErrors.confirm_password" class="error">-->
+            <!--<span ion-text color="danger">{{ formErrors.confirm_password }}</span>-->
+            <!--</span>-->
+          </ion-list>
+        </form>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>
+

@@ -1,9 +1,13 @@
 @import "../../../theme/variables";
 
-info {
+info-card {
+  .item.item-block .text-input {
+    border: 1px solid #eeeeee;
+    color: #999;
+  }
   .card-inner {
     .label {
-      font-size: 14px;
+      font-size: 13px;
       margin: 0 15px 0 0;
       label {
         color: $main-color;
@@ -56,6 +60,7 @@ ion-modal.autocomplete {
   ion-select, .datetime {
     background: $grey-bg-color;
     padding: 6px 8px;
+    color: #999;
   }
   ion-label {
     color: $main-color;

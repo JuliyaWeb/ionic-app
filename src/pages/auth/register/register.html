@@ -17,7 +17,7 @@
     <form [formGroup]="formActivation" class="activation-form">
       <ion-row>
         <ion-col col-4 *ngFor="let item of fieldsCode;">
-          <ion-input type="number" formControlName={{item}}></ion-input>
+          <ion-input type="text" maxlength="2" formControlName={{item}}></ion-input>
         </ion-col>
       </ion-row>
     </form>

@@ -10,9 +10,8 @@ import { User } from "../models/user.model";
 
 @Injectable()
 export class UserService {
-  constructor(
-    private _http: Http
-  ) {}
+  constructor(private _http: Http) {
+  }
 
   getUserInfo(): Observable<User> {
     return this._http
@@ -39,8 +38,17 @@ export class UserService {
       })
   }
 
-  registrationCompletion(data: RegisterSecondaryFrom): Observable<any> {
-    let params: RegisterSecondaryFrom = data;
+  editUser(data: Object): Observable<any> {
+    let params: Object = data;
+    return this._http
+      .put('/users/', params)
+      .map((response: Response) => {
+        return response.json();
+      })
+  }
+
+  registrationCompletion(data: Object): Observable<any> {
+    let params: Object = data;
     return this._http
       .put('/users/', params)
       .map((response: Response) => {

@@ -23,7 +23,7 @@ export class InitProfileDataService {
   }
 
   getAgeData(min: number = 16, max: number = 60) {
-    this._ageData = []
+    this._ageData = [];
     for (let i = min; i < max; i++) {
       this._ageData.push(i.toString());
     }
@@ -53,6 +53,7 @@ export class InitProfileDataService {
   getInterestedInData() {
     return this._interestedInData;
   }
+
   getprofileCardsData(): Array<Object> {
     return this._profileCards;
   }
@@ -72,6 +73,9 @@ export class InitProfileDataService {
     }, {
       type: 'home_life',
       title: 'Home Life',
+    }, {
+      type: 'register_completion',
+      title: 'UserName & Password',
     }];
 
     /* Gender */
@@ -84,7 +88,7 @@ export class InitProfileDataService {
     }];
 
     /* Age */
-    this._ageData = []
+    this._ageData = [];
     for (let i = 16; i < 60; i++) {
       this._ageData.push(i.toString());
     }

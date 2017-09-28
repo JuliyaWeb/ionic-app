@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { LoadingController, NavController } from 'ionic-angular';
+import { LoadingController, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginPage } from "../login/login";
 import { RegisterForm, AuthServiceApp } from "../../../core/auth/index";
 import { FormHelper } from "../../../core/helpers/form-helper";
+import { TabsPage } from "../../tabs/tabs";
 
-// @IonicPage({
-//   name: 'register'
-// })
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
@@ -27,11 +25,13 @@ export class RegisterPage {
               private authService: AuthServiceApp) {
   }
 
+
   ionViewCanEnter() {
     this._buildForm();
-    this._enterCode();
     this.fieldsCode = ['part-code1', 'part-code2', 'part-code3'];
-    console.log(this.formActivation)
+    // get activation code
+    this._enterCode('123456');
+    // this._enterCode(navParams.get('code') || null);
   }
 
   private _buildForm() {
@@ -46,30 +46,9 @@ export class RegisterPage {
 
     this.formActivation = this.fb.group({
       'part-code1': ['', [Validators.required]],
-      'part-code2': [{value: '', disabled: true}, [Validators.required]],
-      'part-code3': [{value: '', disabled: true}, [Validators.required]]
+      'part-code2': ['', [Validators.required]],
+      'part-code3': ['', [Validators.required]]
     });
-
-    this.formActivation.valueChanges
-      .subscribe(data => {
-        if (data['part-code1'].length() == 2) {
-          console.log(data);
-        }
-
-      });
-  }
-
-  private _enterCode() {
-    this.formActivation.valueChanges
-      .subscribe(data => {
-        if (data['part-code1'].length() == 2) {
-          this._getControlCode('part-code2', {disabled: false, focus: true});
-        }
-      });
-  }
-
-  private _getControlCode(field, data) {
-    return this.formActivation.controls[field].setValue((data));
   }
 
   public onSubmit(values: Object): void {
@@ -103,8 +82,33 @@ export class RegisterPage {
     }
   }
 
+  private _enterCode(code) {
+    if (code) {
+      let arr = code.match(/\d{1,2}/g);
+      for (let i = 0; i < arr.length; i++) {
+        this.formActivation.controls[`part-code${i + 1}`].patchValue(arr[i]);
+      }
+      this.navCtrl.setRoot(TabsPage);
+     localStorage.setItem('register_completion','true');
+      // this._confirmCode(code);
+    }
+  }
+
+  private _confirmCode(code: string) {
+    this.authService.confirmEmail(code)
+      .subscribe(
+        (data) => {
+          this.navCtrl.setRoot(TabsPage);
+        },
+        (error) => {
+          console.error(error);
+        }
+      )
+  }
+
   public goToLogin() {
     this.navCtrl.setRoot(LoginPage);
   }
+
 
 }

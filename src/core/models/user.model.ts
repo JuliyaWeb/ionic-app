@@ -27,6 +27,7 @@ export class User {
     this.created_by = data.created_by;
     this.modified = data.modified;
     this.modified_by = data.modified_by;
+    this.info = data.info
   }
 
   get full_name(): string {

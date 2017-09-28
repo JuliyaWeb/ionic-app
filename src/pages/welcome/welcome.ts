@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from "../auth/login/login";
 import { RegisterPage } from "../auth/register/register";
@@ -10,18 +11,21 @@ import { RegisterPage } from "../auth/register/register";
 export class WelcomePage {
   public sliders: Array<any>;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private storage: Storage) {
   }
 
-  ionViewCanEnter(){
+  ionViewCanEnter() {
     this._initSlider();
   }
 
   goToLogin() {
     this.navCtrl.setRoot(LoginPage);
+    this.storage.set('hasSeenTutorial', 'true');
   }
+
   goToRegister() {
     this.navCtrl.setRoot(RegisterPage);
+    this.storage.set('hasSeenTutorial', 'true');
   }
 
   private _initSlider() {

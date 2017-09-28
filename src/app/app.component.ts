@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { AlertController, Platform, Nav } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
@@ -12,8 +13,8 @@ import { TabsPage } from "../pages/tabs/tabs";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = WelcomePage;
-  // rootPage: any = TabsPage;
+  // rootPage: any = WelcomePage;
+  rootPage: any = TabsPage;
 
   @ViewChild(Nav) navChild: Nav;
 
@@ -21,7 +22,18 @@ export class MyApp {
               splashScreen: SplashScreen,
               private deeplinks: Deeplinks,
               private push: Push,
+              private storage: Storage,
               private alertCtrl: AlertController) {
+
+    // Check if the user has already seen the tutorial
+    // this.storage.get('hasSeenTutorial').then((hasSeenTutorial) => {
+    //   if (hasSeenTutorial) {
+    //     this.rootPage = TabsPage;
+    //   } else {
+    //     this.rootPage = WelcomePage;
+    //   }
+    // });
+
     platform.ready().then(() => {
       splashScreen.hide();
       this.pushsetup();
@@ -29,8 +41,8 @@ export class MyApp {
         '/register-completion': TabsPage,
       }).subscribe((match) => {
         // if (match.$link['path'] == '/register-completion') {
-          // console.log('match.$link', match.$link);
-          // this.navChild.setRoot(RegisterCompletionPage);
+        // console.log('match.$link', match.$link);
+        // this.navChild.setRoot(RegisterCompletionPage);
         // }
       }, (nomatch) => {
         console.error('Got a deeplink that didn\'t match', nomatch);
@@ -38,6 +50,7 @@ export class MyApp {
     });
 
   }
+
   pushsetup() {
     const options: PushOptions = {
       android: {

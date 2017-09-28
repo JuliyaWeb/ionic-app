@@ -8,8 +8,8 @@
         <fa-icon name="cog" class="icon"></fa-icon>
       </button>
       <div *ngIf="editProfile" class="edit-row">
+        <button ion-button clear small (click)="saveData()">Save</button>
         <button ion-button clear small>Edit</button>
-        <button ion-button clear small>Save</button>
         <button ion-button clear small (click)="toggleEditProfile()">
           <ion-icon name='ios-close-circle' class="icon"></ion-icon>
         </button>
@@ -24,10 +24,10 @@
       <image-upload [icon]="'pencil'" (outputImg)="getImgSrc($event)"></image-upload>
     </div>
     <div class="profile-image">
-      <img class="picture" [src]="userAvatar" width="110" height="110"
+      <img class="picture" [src]="user?.info?.image" width="110" height="110"
            style="display: block; margin-left: auto; margin-right: auto;">
     </div>
-    <h1 class="profile-full-name" text-center>Lucy Campbell</h1>
+    <h1 class="profile-full-name" text-center>{{user.full_name}}</h1>
   </div>
   <div class="profile-page-content">
     <div padding class="profile-tab-bar">
@@ -46,7 +46,8 @@
     <div [ngSwitch]="segment">
       <div class="segment-wrapper" *ngSwitchCase="'info'">
         <!-- Profile Strength -->
-        <ion-card class="profile-strength">
+        <ion-card class="profile-strength" *ngIf="!
+        registerCompletion">
           <ion-card-content>
             <div class="strength-chart">
               <canvas baseChart
@@ -87,29 +88,7 @@
           </ion-card-content>
         </ion-card>
         <!-- Info Cards -->
-        <ion-card *ngFor="let card of cards let i = index;" [class.first]="(i == 1)">
-          <ion-card-header>
-            <ion-row no-padding>
-              <ion-col text-left>
-                <h4 color="primary">{{card.title}}</h4>
-              </ion-col>
-              <ion-col text-right class="configs">
-                <button ion-button clear small no-margin *ngIf="!card.edit" (click)="toggleCard(card)">
-                  <fa-icon name="cog" class="icon"></fa-icon>
-                </button>
-                <div *ngIf="card.edit" class="edit-card">
-                  <button ion-button clear small>Save</button>
-                  <button ion-button clear small (click)="toggleCard(card)">
-                    <ion-icon name='ios-close-circle' class="icon"></ion-icon>
-                  </button>
-                </div>
-              </ion-col>
-            </ion-row>
-          </ion-card-header>
-          <ion-card-content>
-            <info [card]="card"></info>
-          </ion-card-content>
-        </ion-card>
+        <info-card [userData]="user"></info-card>
       </div>
       <div class="segment-wrapper" *ngSwitchCase="'interests'">
         <interests></interests>
@@ -120,4 +99,3 @@
     </div>
   </div>
 </ion-content>
-

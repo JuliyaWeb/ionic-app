@@ -83,7 +83,7 @@ export class AuthServiceApp {
       })
   }
 
-  registrationCompletion(data: RegisterSecondaryFrom): Observable<User> {
+  registrationCompletion(data: Object): Observable<User> {
     return this._userService.registrationCompletion(data)
       .map((response) => {
         const user: User = new User(response);
@@ -103,6 +103,15 @@ export class AuthServiceApp {
         }
         //const user: User = new User(response);
         return response;
+      })
+  }
+
+  saveUserData(data:Object, ):Observable<any> {
+    return this._userService.editUser(data)
+      .map((response) => {
+        let user: User = this.getUser();
+        console.log(user);
+        return user;
       })
   }
 

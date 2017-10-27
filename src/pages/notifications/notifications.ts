@@ -10,6 +10,7 @@ import { CampaignOfferPage } from "../campaign-offer/campaign-offer";
   templateUrl: 'notifications.html',
 })
 // https://angular-meteor.com/tutorials/whatsapp2/ionic/messages-page
+//  Chat example https://github.com/mojofit/imojo
 export class NotificationsPage {
   public notice: Array<any>;
   // public notifications: Array<Notification>;
@@ -18,7 +19,7 @@ export class NotificationsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+    console.log('ionViewDidLoad NotificationsPage');
     this._findChats();
   }
 
@@ -74,6 +75,5 @@ export class NotificationsPage {
           type: MessageType.OFFER
         }
       }];
-
   }
 }

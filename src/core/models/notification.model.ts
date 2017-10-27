@@ -20,8 +20,4 @@ export interface Message {
   createdAt?: Date;
   type?: MessageType;
   ownership?: string;
-
-  // getTypeTitle(type) {
-  //   return (type == 0) ? 'Direct Message' : 'Campaign Offer';
-  // }
 }

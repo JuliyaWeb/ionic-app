@@ -5,9 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { WelcomePage } from "../pages/welcome/welcome";
 import { Deeplinks } from "@ionic-native/deeplinks";
-import { RegisterCompletionPage } from "../pages/auth/register-completion/register-completion";
+// import { RegisterCompletionPage } from "../pages/auth/register-completion/register-completion";
 import { ProfilePage } from "../pages/profile/profile";
 import { TabsPage } from "../pages/tabs/tabs";
+import { NotificationsPage } from "../pages/notifications/notifications";
 
 @Component({
   templateUrl: 'app.html'
@@ -36,22 +37,23 @@ export class MyApp {
 
     platform.ready().then(() => {
       splashScreen.hide();
-      this.pushsetup();
-      this.deeplinks.routeWithNavController(this.navChild, {
-        '/register-completion': TabsPage,
-      }).subscribe((match) => {
-        // if (match.$link['path'] == '/register-completion') {
-        // console.log('match.$link', match.$link);
-        // this.navChild.setRoot(RegisterCompletionPage);
-        // }
-      }, (nomatch) => {
-        console.error('Got a deeplink that didn\'t match', nomatch);
-      });
+      this.initPushNotification();
+      // this.deeplinks.routeWithNavController(this.navChild, {
+      //   '/register-completion': TabsPage,
+      // }).subscribe((match) => {
+      //   // if (match.$link['path'] == '/register-completion') {
+      //   // console.log('match.$link', match.$link);
+      //   // this.navChild.setRoot(RegisterCompletionPage);
+      //   // }
+      // }, (nomatch) => {
+      //   console.error('Got a deeplink that didn\'t match', nomatch);
+      // });
     });
 
   }
 
-  pushsetup() {
+  // Implementation push notification
+  initPushNotification() {
     const options: PushOptions = {
       android: {
         senderID: '428820040706'
@@ -59,25 +61,47 @@ export class MyApp {
       ios: {
         alert: 'true',
         badge: true,
-        sound: 'false'
+        sound: 'true'
       },
       windows: {}
     };
 
     const pushObject: PushObject = this.push.init(options);
 
-    pushObject.on('notification').subscribe((notification: any) => {
-      if (notification.additionalData.foreground) {
+    pushObject.on('registration').subscribe((data: any) => {
+      console.log('device token -> ' + data.registrationId);
+      //TODO - send device token to server
+    });
+
+    pushObject.on('notification').subscribe((data: any) => {
+      console.log('data -> ' , data);
+      console.log('message -> ' + data.message);
+      //if user using app and push notification comes
+      if (data.additionalData.foreground) {
+        // if application open, show popup
         let confirmAlert = this.alertCtrl.create({
-          title: 'New Push notification',
-          message: notification.message
+          title: 'New Notification',
+          message: data.message,
+          buttons: [{
+            text: 'Ignore',
+            role: 'cancel'
+          }, {
+            text: 'View',
+            handler: () => {
+              //TODO: Implementation logic here
+              this.navChild.push(NotificationsPage, { message: data.message });
+            }
+          }]
         });
         confirmAlert.present();
+      } else {
+        //if user NOT using app and push notification comes
+        //TODO: Implementation logic on click of push notification directly
+        this.navChild.push(NotificationsPage, { message: data.message });
+        console.log('Push notification clicked');
       }
     });
 
-    pushObject.on('registration').subscribe((registration: any) => console.log('Device registered', registration));
-
-    pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
+    pushObject.on('error').subscribe(error => console.error('Error with Push plugin' + error));
   }
 }

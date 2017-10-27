@@ -122,7 +122,7 @@ export class InfoComponent {
   }
 
   private _setDataUserInfo(userInfo) {
-    console.log(userInfo)
+    console.log(userInfo);
     userInfo.first_name && (this.aboutForm.patchValue({first_name: userInfo.first_name}));
     userInfo.last_name && (this.aboutForm.patchValue({last_name: userInfo.last_name}));
     this.workEducationForm.patchValue(userInfo.info);
@@ -142,9 +142,9 @@ export class InfoComponent {
 
   // get data from form for request
   public serializeDataForRequest() {
+    const formControls = this._formGrops();
     let data: Object = {info: {}};
     let checkFields = ['first_name', 'last_name', 'username', 'password', 'confirm_password'];
-    const formControls = this._formGrops();
 
     for (let field in formControls) {
       if (checkFields.indexOf(field) > -1) {
@@ -153,7 +153,6 @@ export class InfoComponent {
         data['info'][field] = formControls[field].value;
       }
     }
-    console.log(data);
     return data;
   }
 

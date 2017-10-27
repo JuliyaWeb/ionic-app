@@ -5,6 +5,7 @@ import { LoginPage } from "../login/login";
 import { RegisterForm, AuthServiceApp } from "../../../core/auth/index";
 import { FormHelper } from "../../../core/helpers/form-helper";
 import { TabsPage } from "../../tabs/tabs";
+import { ProfilePage } from "../../profile/profile";
 
 @Component({
   selector: 'page-register',
@@ -88,7 +89,8 @@ export class RegisterPage {
       for (let i = 0; i < arr.length; i++) {
         this.formActivation.controls[`part-code${i + 1}`].patchValue(arr[i]);
       }
-      this.navCtrl.setRoot(TabsPage);
+      this.navCtrl.setRoot(ProfilePage);
+      // this.navCtrl.setRoot(TabsPage);
      localStorage.setItem('register_completion','true');
       // this._confirmCode(code);
     }

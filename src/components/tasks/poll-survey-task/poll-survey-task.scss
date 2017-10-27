@@ -19,11 +19,26 @@ poll-survey-task {
     }
   }
   .one-to-ten {
+    overflow: hidden;
+    display: block;
     .item {
       width: 20%;
-      display: inline-block;
+      float: left;
       border-top: 1px solid;
       border-left: 1px solid;
+      background: $grey-bg-color;
+      .radio {
+        margin: 0;
+      }
+      &.item-radio-checked {
+        background: $main-color;
+        ion-label {
+          color: #fff;
+        }
+        .radio {
+          display: none;
+        }
+      }
     }
   }
   ion-select {

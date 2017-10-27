@@ -12,7 +12,6 @@ import { InfoComponent } from "../../components/user-profile/info/info";
 })
 export class ProfilePage {
 
-  @ViewChild(InfoComponent) userInfo: InfoComponent;
 
   public cards: Array<Card> = [];
   public segment = 'info';
@@ -20,6 +19,7 @@ export class ProfilePage {
   public editProfile: boolean = false;
   public registerCompletion: boolean = false;
   public userAvatar: string = 'https://s3.amazonaws.com/ionic-io-static/9TxJELnATnW9H3MZZfdG_Profile_avatar_placeholder_large.png';
+  @ViewChild(InfoComponent) userInfo: InfoComponent;
 
   /* Chart */
   public doughnutChartType: string = 'pie';
